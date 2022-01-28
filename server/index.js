@@ -7,7 +7,7 @@ const { nanoid } = require('nanoid')
 
 const db = lowDb(new FileSync('db.json'))
 
-db.defaults({ notes: [] }).write()
+db.defaults({ persons: [] }).write()
 
 const app = express()
 
@@ -17,17 +17,17 @@ app.use(bodyParser.json())
 
 const PORT = 4000
 
-app.get('/notes', (req, res) => {
-    const data = db.get('notes').value()
+app.get('/persons', (req, res) => {
+    const data = db.get('persons').value()
     return res.json(data)
 })
 
-app.post('/notes/new', (req, res) => {
-    const note = req.body
-    db.get("notes").push({
-        ...note, id: nanoid(),
+app.post('/persons', (req, res) => {
+    const person = req.body
+    db.get("persons").push({
+        ...person, id: nanoid(),
     }).write()
-    res.json({success: 'новая заметка успешно добавлена'})
+    res.json({ success: 'новый человек успешно добавлен' })
 })
 
 app.listen(PORT, () => {

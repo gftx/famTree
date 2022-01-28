@@ -5,42 +5,45 @@ import { Link } from "react-router-dom";
 
 
 const MainPage = () => {
-    const [notes, setNotes] = useState([])
+    const [persons, setPersons] = useState([])
 
-    const getNotes = async () => {
+    const getPersons = async () => {
         const res = await axios({
             method: 'GET',
-            url: 'http://localhost:4000/notes'
+            url: 'http://localhost:4000/persons'
         })
-        setNotes(res.data)
+        console.log('persons', res.data)
+        setPersons(res.data)
     }
 
     useEffect(() => {
-        getNotes()
+        getPersons()
     }, [])
 
 
-    const postNote = async () => {
-        const res = await axios({
-            method: "POST",
-            url: 'http://localhost:4000/notes/new',
-            data: {
-                text: 'new note'
-            },
-        })
-        console.log('post note res:', res)
-        getNotes()
-    }
+
 
     return (
         <div>
             hello world
             <ul>
-                {notes.map(item => (
-                    <li key={item.id}>{item.text}</li>
-                ))}
+                {persons.map(person => {
+                    const { id, name, age, father, mother, son, daughter } = person
+                    return (
+                        <li key={id}>
+                            <h3>{name}</h3>
+                            <p>возраст {age}</p>
+                            <p>родители {father} и {mother}</p>
+                            {son && (
+                                <p>сын {son} </p>
+                            )}
+                            {daughter && (
+                                <p>дочь {daughter} </p>
+                            )}
+                        </li>
+                    )
+                })}
             </ul>
-            <button onClick={postNote}>add note</button>
             <br />
             <Link to='/login'>login page</Link>
         </div>
