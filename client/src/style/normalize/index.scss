@@ -1,0 +1,81 @@
+
+/* Reset. */
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	background-color: transparent;
+}
+
+/* Normalizing. */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+img,
+video,
+iframe,
+svg,
+button,
+label,
+input {
+	display: block;
+}
+
+a,
+button,
+label,
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+input[type='checkbox'],
+input[type='radio'],
+input[type='range'],
+input[type='file'],
+select {
+	cursor: pointer;
+}
+
+input:disabled,
+button:disabled {
+	cursor: not-allowed;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: inherit;
+	font-family: inherit;
+	text-decoration: none;
+	color: inherit;
+}
+
+table th,
+table td {
+	vertical-align: middle;
+}
+
+/* Settings. */
+a:focus,
+button:focus,
+input:focus,
+*:focus {
+	outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+*:focus-visible {
+	outline: 2px solid #ffae00;
+	outline-offset: 2px;
+}

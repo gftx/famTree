@@ -1,28 +1,31 @@
 {
-  "notes": [
+  "persons": [
     {
-      "text": "new note",
-      "id": "XtT7o2DzvdZ3NLFNnGCCv"
+      "name": "Родион",
+      "age": "21",
+      "father": "Юрий",
+      "mother": "Гузель",
+      "son": null,
+      "dother": null,
+      "id": "0M8EO5YSHXMIYHCZY5oPc"
     },
     {
-      "text": "new note",
-      "id": "sVmaJEd15MpKiEAmGhk6f"
+      "name": "Родион",
+      "age": "21",
+      "father": "Юрий",
+      "mother": "Гузель",
+      "son": null,
+      "daughter": null,
+      "id": "p6Ozjp-G6SCMOacKkaNO3"
     },
     {
-      "text": "new note",
-      "id": "R35ElXWzcZvdqHt5J9B9t"
-    },
-    {
-      "text": "new note",
-      "id": "TvpwIQ9UU6vXu1zm5GwIG"
-    },
-    {
-      "text": "new note",
-      "id": "zFlcTL-kHQMHkfrU4YHNv"
-    },
-    {
-      "text": "new note",
-      "id": "14Bk5IoTTAn-ktXTXdBm4"
+      "name": "Родион",
+      "age": "21",
+      "father": "Юрий",
+      "mother": "Гузель",
+      "son": "Гузель",
+      "daughter": null,
+      "id": "VhKFeCLF__C-DrONnRWm2"
     }
   ]
 }

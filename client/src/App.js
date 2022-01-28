@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { MainPage, LogInPage } from './pages';
 import { Layout } from './layout'
+import './style/style.scss'
 
 function App() {
 
