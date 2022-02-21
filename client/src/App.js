@@ -8,20 +8,17 @@ import { Layout } from './layout'
 import './style/style.scss'
 
 function App() {
-
   return (
-    <div className="App">
-      <Router>
-        <Layout>
-          <Routes>
-            <Route exact path='/' element={
-              <MainPage />} />
-            <Route exact path='/login' element={
-              <LogInPage />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route exact path='/' element={
+            <MainPage />} />
+          <Route exact path='/login' element={
+            <LogInPage />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 

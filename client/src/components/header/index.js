@@ -1,17 +1,16 @@
+import { Link } from "react-router-dom";
+import Button from '@mui/material/Button';
+
 
 const Header = () => {
     return (
         <header className='header'>
-            <h3 className='header-logo'>fam tree</h3>
-            <ul className='header-list'>
-                {/* {headerMenu.map(item => (
-                  <Link key={item.id} to={item.slug}>
-                      <li className='header-list__item'>
-                          {item.title}
-                      </li>
-                  </Link>
-              ))} */}
-            </ul>
+            <h3 className='header-title'>Семейное дерево Дубановых</h3>
+            <div className="header-admin__link">
+                <Button>
+                    <Link to='/login'>вход</Link>
+                </Button>
+            </div>
         </header>
     )
 }

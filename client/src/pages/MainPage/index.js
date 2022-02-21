@@ -1,36 +1,47 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from "react-router-dom";
-
-
 
 const MainPage = () => {
     const [persons, setPersons] = useState([])
+    const [data, setData] = useState({
+        title: 'title',
+        content: 'content',
+        postDate: new Date(),
+    })
 
     const getPersons = async () => {
         const res = await axios({
             method: 'GET',
-            url: 'http://localhost:4000/persons'
+            url: 'http://localhost:3001/api/posts'
         })
-        console.log('persons', res.data)
-        setPersons(res.data)
+        console.log('res', res.data)
+        // setPersons(res.data)
     }
 
     useEffect(() => {
         getPersons()
-    }, [])
+    }, [persons])
 
+    const post = async () => {
+        const res = await axios({
+            method: 'POST',
+            url: 'http://localhost:3001/api/posts',
+            data: data
+        })
+        console.log(res)
+    }
 
 
 
     return (
-        <div>
-            hello world
+        <main>
             <ul>
-                {persons.map(person => {
-                    const { id, name, age, father, mother, son, daughter } = person
+                <button onClick={post}>post</button>
+                {/* {persons.map(person => {
+                    const { id, name, age, father, mother, son, daughter, img } = person
                     return (
                         <li key={id}>
+                            <img src={img}/>
                             <h3>{name}</h3>
                             <p>возраст {age}</p>
                             <p>родители {father} и {mother}</p>
@@ -42,11 +53,11 @@ const MainPage = () => {
                             )}
                         </li>
                     )
-                })}
+                })} */}
             </ul>
             <br />
-            <Link to='/login'>login page</Link>
-        </div>
+
+        </main>
     )
 }
 
