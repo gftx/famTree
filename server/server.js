@@ -28,4 +28,4 @@ mongoose.connect(mongoURI, {
     console.log('Error in DB connection: ' + err)
   })
 
-app.use('/api', require('./routes/register.js'));
+app.use('/api', require('./routes/auth.js'));
