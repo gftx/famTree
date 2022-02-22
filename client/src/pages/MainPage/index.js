@@ -3,10 +3,16 @@ import axios from 'axios'
 
 const MainPage = () => {
     const [persons, setPersons] = useState([])
+
+    // const [data, setData] = useState({
+    //     title: 'title',
+    //     content: 'content',
+    //     postDate: new Date(),
+    // })
     const [data, setData] = useState({
-        title: 'title',
-        content: 'content',
-        postDate: new Date(),
+        username: 'user',
+        email: 'email',
+        password: 'password',
     })
 
     const getPersons = async () => {
@@ -25,13 +31,11 @@ const MainPage = () => {
     const post = async () => {
         const res = await axios({
             method: 'POST',
-            url: 'http://localhost:3001/api/posts',
+            url: 'http://localhost:3001/api/register',
             data: data
         })
         console.log(res)
     }
-
-
 
     return (
         <main>
