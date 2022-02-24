@@ -1,66 +1,54 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import Button from '@mui/material/Button';
+import { MAIN_URL } from '../../api';
 
 const MainPage = () => {
     const [persons, setPersons] = useState([])
 
-    // const [data, setData] = useState({
-    //     title: 'title',
-    //     content: 'content',
-    //     postDate: new Date(),
-    // })
-    const [data, setData] = useState({
-        username: 'user',
-        email: 'email',
-        password: 'password',
-    })
-
-    const getPersons = async () => {
+    const get = async () => {
         const res = await axios({
-            method: 'GET',
-            url: 'http://localhost:3001/api/posts'
+            method: 'get',
+            url: MAIN_URL + '/persons',
+            headers: {
+                "Content-Type": "application/json",
+            },
         })
-        console.log('res', res.data)
-        // setPersons(res.data)
+        console.log('res', res)
+        setPersons(res.data.persons)
     }
+    useEffect(() => get(), [])
 
     useEffect(() => {
-        getPersons()
+        console.log('persons', persons)
     }, [persons])
 
     const post = async () => {
+
+        let data = {
+            name: 'name',
+            surname: 'surname',
+            birthDate: '25.05.2000',
+        }
+
         const res = await axios({
-            method: 'POST',
-            url: 'http://localhost:3001/api/register',
-            data: data
+            method: 'post',
+            url: MAIN_URL + '/persons',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: {
+                name: 'name',
+                surname: 'surname',
+                birthDate: '25.05.2000',
+            }
         })
-        console.log(res)
+        console.log('res', res)
     }
 
     return (
         <main>
-            <ul>
-                <button onClick={post}>post</button>
-                {/* {persons.map(person => {
-                    const { id, name, age, father, mother, son, daughter, img } = person
-                    return (
-                        <li key={id}>
-                            <img src={img}/>
-                            <h3>{name}</h3>
-                            <p>возраст {age}</p>
-                            <p>родители {father} и {mother}</p>
-                            {son && (
-                                <p>сын {son} </p>
-                            )}
-                            {daughter && (
-                                <p>дочь {daughter} </p>
-                            )}
-                        </li>
-                    )
-                })} */}
-            </ul>
-            <br />
-
+            <Button onClick={post}>кнопка</Button>
         </main>
     )
 }
