@@ -2,7 +2,6 @@ const router = require('express').Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
-const verifyJWT = require("../verifyJWT");
 const { json } = require('body-parser');
 
 
@@ -37,7 +36,7 @@ router.post('/login', (req, res) => {
   User.findOne({ username: UserLoggingIn.username })
     .then(dbUser => {
       if (!dbUser) {
-        return res.json({ msg: 'пользовательне найден' })
+        return res.json({ msg: 'пользователь не найден' })
       }
       bcrypt.compare(UserLoggingIn.password, dbUser.password)
         .then(isCorrect => {
@@ -48,11 +47,14 @@ router.post('/login', (req, res) => {
             }
             jwt.sign(
               payload,
-              process.env.JWT_SECRET,
+              'black',
               { expiresIn: 86400 },
               (err, token) => {
                 if (err) {
-                  return res.json(err)
+                  return res.json({
+                    msg: 'ошибка какая-то',
+                    err: err,
+                  })
                 }
                 return res.json({
                   msg: 'успешный вход',

@@ -12,7 +12,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json(), urlencodedParser);
 
 // connetc to mongoDB
-const mongoURI = "mongodb+srv://Anton:Anton1122@famtree.gvahs.mongodb.net/famTree?retryWrites=true&w=majority"
+const mongoURI = 'your mongoURI'
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
@@ -29,3 +29,4 @@ mongoose.connect(mongoURI, {
   })
 
 app.use('/api', require('./routes/auth.js'));
+app.use('/api', require('./routes/persons.js'))

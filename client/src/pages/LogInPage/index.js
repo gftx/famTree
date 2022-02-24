@@ -1,31 +1,30 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom";
-
+import { MAIN_URL } from '../../api';
+import Button from '@mui/material/Button';
 
 
 const LogInPage = () => {
+    const data = {
+        username: 'user',
+        email: 'email',
+        password: 'password'
+    }
 
-    const newPerson = async () => {
+    const login = async () => {
         const res = await axios({
-            method: "POST",
-            url: 'http://localhost:4000/persons',
-            data: {
-                name: 'Родион',
-                age: '21',
-                father: 'Юрий',
-                mother: 'Гузель',
-                son: null,
-                daughter: null,
-            },
+            method: 'POST',
+            url: MAIN_URL + '/login',
+            data: data
         })
-        console.log('post note res:', res)
+        console.log(res)
     }
 
     return (
         <div>
             hello login page
-            <button onClick={newPerson}>new person</button>
+            <Button onClick={login}>login</Button>
             <br />
             <Link to='/'>main page</Link>
         </div>
