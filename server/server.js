@@ -11,7 +11,7 @@ app.use(cors());
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json(), urlencodedParser);
 
-// connetc to mongoDB
+// connect to mongoDB
 const mongoURI = 'your mongoURI'
 
 mongoose.connect(mongoURI, {

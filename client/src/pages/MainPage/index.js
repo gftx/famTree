@@ -9,7 +9,10 @@ const MainPage = () => {
     const get = async () => {
         const res = await axios({
             method: 'get',
-            url: MAIN_URL + '/persons'
+            url: MAIN_URL + '/persons',
+            headers: {
+                "Content-Type": "application/json",
+            },
         })
         console.log('res', res)
         setPersons(res.data.persons)
@@ -31,6 +34,9 @@ const MainPage = () => {
         const res = await axios({
             method: 'post',
             url: MAIN_URL + '/persons',
+            headers: {
+                "Content-Type": "application/json",
+            },
             data: {
                 name: 'name',
                 surname: 'surname',

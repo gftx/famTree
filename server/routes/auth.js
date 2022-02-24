@@ -12,9 +12,9 @@ router.post('/register', async (req, res) => {
   const takenEmail = await User.findOne({ email: user.email })
 
   if (takenEmail) {
-    res.json({ msg: 'Почта уже занята' })
+    res.send({ msg: 'Почта уже занята' })
   } else if (takenUserName) {
-    res.json({ msg: 'Имя пользователя уже занято' })
+    res.send({ msg: 'Имя пользователя уже занято' })
   } else {
     user.password = await bcrypt.hash(req.body.password, 10)
 
@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
     })
 
     dbUser.save()
-    res.json({ msg: `Пользователь ${user.username} успешно создан` })
+    res.send({ msg: `Пользователь ${user.username} успешно создан` })
   }
 })
 
@@ -36,7 +36,7 @@ router.post('/login', (req, res) => {
   User.findOne({ username: UserLoggingIn.username })
     .then(dbUser => {
       if (!dbUser) {
-        return res.json({ msg: 'пользователь не найден' })
+        return res.send({ msg: 'пользователь не найден' })
       }
       bcrypt.compare(UserLoggingIn.password, dbUser.password)
         .then(isCorrect => {
@@ -51,19 +51,19 @@ router.post('/login', (req, res) => {
               { expiresIn: 86400 },
               (err, token) => {
                 if (err) {
-                  return res.json({
+                  return res.send({
                     msg: 'ошибка какая-то',
                     err: err,
                   })
                 }
-                return res.json({
+                return res.send({
                   msg: 'успешный вход',
                   token: 'Bearer ' + token
                 })
               }
             )
           } else {
-            return res.json({ msg: 'неверный пароль' })
+            return res.send({ msg: 'неверный пароль' })
           }
         })
     })
