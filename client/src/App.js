@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { MainPage, LogInPage } from './pages';
+import { MainPage, LogInPage, ProfilePage } from './pages';
 import { Layout } from './layout'
 import './style/style.scss'
 
@@ -16,6 +16,8 @@ function App() {
             <MainPage />} />
           <Route exact path='/login' element={
             <LogInPage />} />
+          <Route exact path='/profile' element={
+            <ProfilePage />} />
         </Routes>
       </Layout>
     </Router>

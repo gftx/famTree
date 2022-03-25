@@ -1,6 +1,9 @@
 .footer {
-    min-height: 10vh;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    margin: 30px 0;
+    a {
+        margin-left: 5px;
+    }
 }

@@ -1,0 +1,68 @@
+.main {
+	max-width: 1100px;
+	margin: 30px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+
+    .main-shout {
+        text-align: center;
+        font-style: italic;
+        margin-bottom: 30px;
+    }
+
+	.mainCard {
+		&-container {
+			padding: 10px;
+			border: 1px solid #1976d2;
+			border-radius: 15px;
+			cursor: pointer;
+			margin: 10px;
+			height: max-content;
+
+			&:hover {
+				border: 1px solid #135ca5;
+				box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+			}
+		}
+		&-image {
+			width: 250px;
+			height: 400px;
+			object-fit: contain;
+		}
+
+		&-mainInfo {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			&-name {
+				margin: 10px 0 5px;
+			}
+			&-birthDate {
+				margin: 5px 0 10px;
+			}
+		}
+        
+		&-siblings {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			&-parent {
+				margin: 10px 10px;
+			}
+			&-brothers {
+				margin: 10px 10px;
+			}
+			&-sisters {
+				margin: 10px 10px;
+			}
+			li {
+				width: max-content;
+				&:hover {
+					color: #135ca5;
+				}
+			}
+		}
+	}
+}

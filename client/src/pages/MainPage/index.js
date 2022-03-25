@@ -1,56 +1,37 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import Button from '@mui/material/Button';
-import { MAIN_URL } from '../../api';
+// import { useState, useEffect } from 'react'
+import MainCard from '../../views/main/mainCard';
+import { useNavigate, createSearchParams } from "react-router-dom";
+import { MOCK_DATA } from '../../constants';
+
 
 const MainPage = () => {
-    const [persons, setPersons] = useState([])
 
-    const get = async () => {
-        const res = await axios({
-            method: 'get',
-            url: MAIN_URL + '/persons',
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        console.log('res', res)
-        setPersons(res.data.persons)
-    }
-    useEffect(() => get(), [])
-
-    useEffect(() => {
-        console.log('persons', persons)
-    }, [persons])
-
-    const post = async () => {
-
-        let data = {
-            name: 'name',
-            surname: 'surname',
-            birthDate: '25.05.2000',
-        }
-
-        const res = await axios({
-            method: 'post',
-            url: MAIN_URL + '/persons',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: {
-                name: 'name',
-                surname: 'surname',
-                birthDate: '25.05.2000',
-            }
-        })
-        console.log('res', res)
+    const navigate = useNavigate()
+    const goToProfile = (value) => {
+        navigate({
+            pathname: "/profile",
+            search: createSearchParams({
+                id: value
+            }).toString()
+        });
     }
 
     return (
-        <main>
-            <Button onClick={post}>кнопка</Button>
+        <main className='main'>
+            <p  className='main-shout'>
+                Сайт - дерево семьи Дубановых. для просмотра родственных связей, 
+                переходите к человеку и все увидите, приятного времяпрепровождения!
+            </p>
+            {MOCK_DATA.map(item => (
+                <div className='mainCard' key={item.id} onClick={() => goToProfile(item.id)}>
+                    <MainCard
+                        goToProfile={goToProfile}
+                        {...item}
+                    />
+                </div>
+            ))}
         </main>
     )
 }
 
-export { MainPage }
+export { MainPage, MOCK_DATA }

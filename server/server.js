@@ -12,7 +12,8 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json(), urlencodedParser);
 
 // connect to mongoDB
-const mongoURI = 'your mongoURI'
+const mongoURI = "mongodb+srv://Anton:Anton1122@famtree.gvahs.mongodb.net/famTree?retryWrites=true&w=majority"
+// const mongoURI = 'your mongoURI'
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
