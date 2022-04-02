@@ -1,20 +1,26 @@
 .header {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 24px;
-    position: relative;
+  width: 100%;
+  background-color: transparent;
+  padding: 24px;
+  position: relative;
 
-    &-title {
-        text-align: center;
-        font-size: 2vw;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-family: Roboto;
-    }
+  &-title {
+    text-align: center;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: Roboto, serif;
+  }
 
+  &-admin__link {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  @media (max-width: 500px) {
     &-admin__link {
-        position: absolute;
-        right: 10px;
-        top: 10px;
+      top: 50px;
     }
+  }
 }

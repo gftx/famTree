@@ -1,7 +1,7 @@
 import { MOCK_DATA } from '../../constants';
 
 export default function MainCard(props) {
-    const { name, surname, birth_date, image, fatherID, motherID, sistersIDs, brothersIDs, goToProfile } = props
+    const { name, surname, birth_date, image, fatherID, motherID, sistersIDs, brothersIDs, goToProfile, childrenIds } = props
 
     const findName = (id) => {
         for (let i = 0; i < MOCK_DATA.length; i++) {
@@ -56,6 +56,16 @@ export default function MainCard(props) {
                         <p>Сестры:</p>
                         <ul>
                             {sistersIDs.map(item => (
+                                <li key={item} onClick={(e) => profileLink(e, item)}>{findName(item)}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+                {childrenIds.length !== 0 && (
+                    <div className='mainCard-siblings-children'>
+                        <p>Дети:</p>
+                        <ul>
+                            {childrenIds.map(item => (
                                 <li key={item} onClick={(e) => profileLink(e, item)}>{findName(item)}</li>
                             ))}
                         </ul>
