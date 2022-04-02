@@ -10,21 +10,21 @@ const MOCK_DATA = [
         image: rodya,
         fatherID: 3,
         motherID: 4,
-        sistersIDs: [],
-        brothersIDs: [2],
+        sistersIDs: [2, 5],
+        brothersIDs: [2, 5],
         childrenIds: []
     },
     {
         id: 5,
-        name: 'Родион',
-        surname: 'Дубанов',
+        name: 'Антон',
+        surname: 'Иванов',
         birth_date: '24.09.2000',
         image: rodya,
         fatherID: 3,
         motherID: 4,
-        sistersIDs: [],
-        brothersIDs: [2],
-        childrenIds: []
+        sistersIDs: [2, 1],
+        brothersIDs: [2, 1],
+        childrenIds: [3, 4]
     },
     {
         id: 2,
@@ -36,7 +36,7 @@ const MOCK_DATA = [
         motherID: 4,
         sistersIDs: [],
         brothersIDs: [2],
-        childrenIds: []
+        childrenIds: [3, 4]
     },
     {
         id: 3,
