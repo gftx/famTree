@@ -2,7 +2,6 @@ import * as React from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { MAIN_URL } from '../../api';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -27,16 +26,7 @@ export default function LoginForm(props: any) {
 		});
 
 	const loginFn = async (values: any) => {
-		const res = await axios({
-			method: 'POST',
-			url: MAIN_URL + '/login',
-			data: values,
-		});
-		console.log('login res', res);
-		if (res.data.token) {
-			localStorage.setItem('token', res.data.token);
-			setIsLogin(true);
-		}
+		
 	};
 
 	return (

@@ -5,44 +5,42 @@ import {
 	useLocation,
 	Link,
 } from 'react-router-dom';
-import { MOCK_DATA } from '../../constants';
+import { api } from '../../api';
 import arrow from '../../images/arrow.png';
+import { IProfile } from '../../interfaces';
 import { ColorButton } from '../../views/buttons/colorButton';
 import ParentView from '../../views/profile/parentView';
 
 const queryString = require('query-string');
 
-interface IProfile {
-	id: number;
-	name: string;
-	surname: string;
-	birth_date: string;
-	image: string;
-	fatherID: number;
-	motherID: number;
-	sistersIDs: number[];
-	brothersIDs: number[];
-	childrenIds: number[];
-}
-
 export function ProfilePage() {
 	const [profile, setProfile] = useState<IProfile>();
+	const [persons, setPersons] = useState<[]>([]);
+
+	const getPersons = async () => {
+		const res: any = await api.getPersons();
+		setPersons(res.data.data);
+	};
+    
+	useEffect(() => {
+		getPersons();
+	}, []);
 
 	const location = useLocation();
 	useEffect(() => {
 		const parsed = queryString.parse(location.search);
 
-		for (let i = 0; i < MOCK_DATA.length; i++) {
-			const el: any = MOCK_DATA[i];
+		for (let i = 0; i < persons.length; i++) {
+			const el: any = persons[i];
 			if (el.id === +parsed.id) {
 				setProfile(el);
 			}
 		}
-	}, [location.search]);
+	}, [location.search, persons]);
 
 	const findPerson = (id: number) => {
-		for (let i = 0; i < MOCK_DATA.length; i++) {
-			const el: any = MOCK_DATA[i];
+		for (let i = 0; i < persons.length; i++) {
+			const el: any = persons[i];
 			if (el.id === id) {
 				return el;
 			}
@@ -126,7 +124,7 @@ export function ProfilePage() {
 									<div className='profilePage-children-container'>
 										<p>Дети:</p>
 										<ul>
-											{profile.childrenIds.map(item => (
+											{profile.childrenIds.map((item: number) => (
 												<li key={item} onClick={() => goToProfile(`${item}`)}>
 													{findPerson(item).name} {findPerson(item).surname}
 												</li>
