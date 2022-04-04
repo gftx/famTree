@@ -1,7 +1,7 @@
-import { Header } from "../components/header"
-import { Footer } from "../components/footer"
+import { Header } from "../views/header"
+import { Footer } from "../views/footer"
 
-const Layout = (props) => {
+const Layout = (props: any) => {
     const { children } = props
     return (
         <>
