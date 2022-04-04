@@ -1,13 +1,13 @@
+const resolve = require('path').resolve
 
-import rodya from './images/rodya.jpeg'
-import yuriy from './images/yuriy.jpeg'
+
 const MOCK_DATA = [
     {
         id: 1,
         name: 'Родион',
         surname: 'Дубанов',
         birth_date: '24.09.2000',
-        image: rodya,
+        image: resolve('./assets/rodya.jpeg'),
         fatherID: 3,
         motherID: 4,
         sistersIDs: [2, 5],
@@ -19,7 +19,7 @@ const MOCK_DATA = [
         name: 'Антон',
         surname: 'Иванов',
         birth_date: '24.09.2000',
-        image: rodya,
+        image: resolve('./assets/rodya.jpeg'),
         fatherID: 3,
         motherID: 4,
         sistersIDs: [2, 1],
@@ -31,7 +31,7 @@ const MOCK_DATA = [
         name: 'Артем',
         surname: 'Дубанов',
         birth_date: '24.09.2000',
-        image: rodya,
+        image: resolve('./assets/rodya.jpeg'),
         fatherID: 3,
         motherID: 4,
         sistersIDs: [],
@@ -43,7 +43,7 @@ const MOCK_DATA = [
         name: 'Юрий',
         surname: 'Дубанов',
         birth_date: '24.09.2000',
-        image: yuriy,
+        image: resolve('./assets/yuriy.jpeg'),
         fatherID: null,
         motherID: null,
         sistersIDs: [],
@@ -55,7 +55,7 @@ const MOCK_DATA = [
         name: 'Гузель',
         surname: 'Дубанова',
         birth_date: '24.09.2000',
-        image: yuriy,
+        image: resolve('./assets/yuriy.jpeg'),
         fatherID: null,
         motherID: null,
         sistersIDs: [],
