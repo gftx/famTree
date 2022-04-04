@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ParentView (props) {
+export default function ParentView (props: any) {
     const {
         goToProfile,
         findPerson,

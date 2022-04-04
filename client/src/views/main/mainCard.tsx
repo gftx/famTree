@@ -1,9 +1,9 @@
 import { MOCK_DATA } from '../../constants';
 
-export default function MainCard(props) {
+export default function MainCard(props: any) {
     const { name, surname, birth_date, image, fatherID, motherID, sistersIDs, brothersIDs, goToProfile, childrenIds } = props
 
-    const findName = (id) => {
+    const findName = (id: any) => {
         for (let i = 0; i < MOCK_DATA.length; i++) {
             const el = MOCK_DATA[i];
             if (el.id === id) {
@@ -12,7 +12,7 @@ export default function MainCard(props) {
         }
     }
 
-    const profileLink = (e, item) => {
+    const profileLink = (e: any, item: any) => {
         e.stopPropagation()
         goToProfile(item)
     }
@@ -45,7 +45,7 @@ export default function MainCard(props) {
                     <div className='mainCard-siblings-brothers'>
                         <p>Братья:</p>
                         <ul>
-                            {brothersIDs.map(item => (
+                            {brothersIDs.map((item: any) => (
                                 <li key={item} onClick={(e) => profileLink(e, item)}>{findName(item)}</li>
                             ))}
                         </ul>
@@ -55,7 +55,7 @@ export default function MainCard(props) {
                     <div className='mainCard-siblings-sisters'>
                         <p>Сестры:</p>
                         <ul>
-                            {sistersIDs.map(item => (
+                            {sistersIDs.map((item: any) => (
                                 <li key={item} onClick={(e) => profileLink(e, item)}>{findName(item)}</li>
                             ))}
                         </ul>
@@ -65,7 +65,7 @@ export default function MainCard(props) {
                     <div className='mainCard-siblings-children'>
                         <p>Дети:</p>
                         <ul>
-                            {childrenIds.map(item => (
+                            {childrenIds.map((item: any) => (
                                 <li key={item} onClick={(e) => profileLink(e, item)}>{findName(item)}</li>
                             ))}
                         </ul>

@@ -12,11 +12,11 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route exact path='/' element={
+          <Route path='/' element={
             <MainPage />} />
-          <Route exact path='/login' element={
+          <Route path='/login' element={
             <LogInPage />} />
-          <Route exact path='/profile' element={
+          <Route path='/profile' element={
             <ProfilePage />} />
         </Routes>
       </Layout>

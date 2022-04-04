@@ -7,7 +7,7 @@ import {MOCK_DATA} from '../../constants';
 const MainPage = () => {
 
     const navigate = useNavigate()
-    const goToProfile = (value) => {
+    const goToProfile = (value: string) => {
         navigate({
             pathname: "/profile",
             search: createSearchParams({
@@ -24,7 +24,7 @@ const MainPage = () => {
             </p>
             <div className='main-container'>
                 {MOCK_DATA.map(item => (
-                    <div className='mainCard' key={item.id} onClick={() => goToProfile(item.id)}>
+                    <div className='mainCard' key={item.id} onClick={() => goToProfile(`${item.id}`)}>
                         <MainCard
                             goToProfile={goToProfile}
                             {...item}
