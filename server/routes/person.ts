@@ -1,47 +1,57 @@
-import express, { Request, Response } from 'express';
-import { MOCK_DATA } from '../mockData';
+import express, {Request, Response} from 'express';
+import {pool} from "../config";
+import {IPerson} from "../types";
+import {QueryResult} from "pg";
 
 const router = express.Router();
 
-interface IPerson {
-	id: number;
-	name: string;
-	surname: string;
-	birth_date: string;
-	image: string;
-	fatherID: number;
-	motherID: number;
-	sistersIDs: number[];
-	brothersIDs: number[];
-	childrenIds: number[];
-}
-
-router.get('/persons', (req: Request, res: Response) => {
-
-    return res.send({
-        data: MOCK_DATA,
-        message: 'успешно получен список людей'
+router.get('/persons', (request: Request, response: Response) => {
+    pool.query('SELECT * FROM public.person', (err: Error, res: QueryResult) => {
+        if (err) {
+            return console.error('Error executing query', err.stack)
+        }
+        return response.send({
+            data: res.rows,
+            message: 'успешно получен список людей'
+        })
     })
 })
 
-router.post('/persons', (req: Request, res: Response) => {
-	const person: IPerson = req.body;
 
-	return res.send({
-		data: {
-			id: person.id,
-			name: person.name,
-			surname: person.surname,
-			birth_date: person.birth_date,
-			image: person.image,
-			fatherID: person.fatherID,
-			motherID: person.motherID,
-			sistersIDs: person.sistersIDs,
-			brothersIDs: person.brothersIDs,
-			childrenIds: person.childrenIds,
-		},
-		message: 'человек успешно создан',
-	});
+router.post('/persons', (request: Request, response: Response) => {
+    const person: IPerson = request.body;
+    const {
+        name,
+        surname,
+        birthdate,
+        image = null,
+        fatherId = null,
+        motherId = null,
+        brothersIds = null,
+        sistersIds = null,
+        childrenIds = null
+    } = person
+    console.log(typeof name, `${name}`)
+
+
+    // language=SQL format=true
+    pool.query(`INSERT INTO public.person (name, surname, birthdate, image, father_id, mother_id, brothers, sisters, children)
+        VALUES (\'${name}\', \'${surname}\', \'${birthdate}\', \'${image}\', \'${fatherId}\',
+        \'${motherId}\', \'${brothersIds}\', \'${sistersIds}\', \'${childrenIds}\');`,
+        (err: Error, res: QueryResult) => {
+            if (err) {
+                console.error('Error executing query', err.stack);
+                return response.send({
+                    message: err.stack
+                })
+            }
+            console.log('post response', res)
+
+            return response.send({
+                message: 'человек успешно создан',
+            });
+        }
+    )
 });
 
-export { router as personsRouter };
+export {router as personsRouter};
