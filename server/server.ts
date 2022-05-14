@@ -1,13 +1,19 @@
+import 'dotenv/config'
 import express from 'express';
 import { json } from 'body-parser';
 import cors from 'cors';
+
 import { userRoute } from './routes/auth';
 import { personsRouter } from './routes/person';
 
+// init database
+require('./config')
+
 // Create global app object
-var app = express();
+const app = express();
 app.use(json());
 app.use(cors());
+
 
 app.listen(5000, () => {
 	console.log('server is running on PORT 5000');
