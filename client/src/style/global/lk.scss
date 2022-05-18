@@ -1,0 +1,15 @@
+.lk {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &-backLink {
+    margin:10px
+  }
+  &-heading {
+    margin: 20px;
+  }
+  input {
+    border: 1px solid black;
+  }
+}

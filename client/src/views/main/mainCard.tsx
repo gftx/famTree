@@ -57,11 +57,11 @@ export default function MainCard(props: any) {
 						</ul>
 					</div>
 				)}
-				{brothersIDs.length !== 0 && (
+				{brothersIDs?.length !== 0 && (
 					<div className='mainCard-siblings-brothers'>
 						<p>Братья:</p>
 						<ul>
-							{brothersIDs.map((item: any) => (
+							{brothersIDs?.map((item: any) => (
 								<li key={item} onClick={e => profileLink(e, item)}>
 									{findName(item)}
 								</li>
@@ -69,11 +69,11 @@ export default function MainCard(props: any) {
 						</ul>
 					</div>
 				)}
-				{sistersIDs.length !== 0 && (
+				{sistersIDs?.length !== 0 && (
 					<div className='mainCard-siblings-sisters'>
 						<p>Сестры:</p>
 						<ul>
-							{sistersIDs.map((item: any) => (
+							{sistersIDs?.map((item: any) => (
 								<li key={item} onClick={e => profileLink(e, item)}>
 									{findName(item)}
 								</li>
@@ -81,11 +81,11 @@ export default function MainCard(props: any) {
 						</ul>
 					</div>
 				)}
-				{childrenIds.length !== 0 && (
+				{childrenIds?.length !== 0 && (
 					<div className='mainCard-siblings-children'>
 						<p>Дети:</p>
 						<ul>
-							{childrenIds.map((item: any) => (
+							{childrenIds?.map((item: any) => (
 								<li key={item} onClick={e => profileLink(e, item)}>
 									{findName(item)}
 								</li>

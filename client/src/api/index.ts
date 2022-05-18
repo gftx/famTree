@@ -2,6 +2,10 @@ import axios from "axios"
 
 const MAIN_URL:string | undefined = process.env.REACT_APP_MAIN_URL
 
+interface Values {
+    firstName: string;
+    image: any;
+}
 class Api {
     url: string | undefined
 
@@ -10,12 +14,19 @@ class Api {
     }
 
     getPersons = async () => {
-        const res = await axios({
+        return axios({
             method: 'GET',
             url: `${this.url}/persons`,
+        });
+    }
+
+    postPerson = async (values: any) => {
+        console.log('postPerson', values)
+        return axios({
+            method: 'POST',
+            url: `${this.url}/persons`,
+            data: values,
         })
-    
-        return res
     }
 }
 

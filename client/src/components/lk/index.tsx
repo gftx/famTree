@@ -1,14 +1,16 @@
-import axios from "axios";
+import * as React from 'react';
+import { LkForm } from "./lkForm";
 
 
-const LK = () => {
-   
-
+export default () => {
     return (
         <>
-            личный кабинет
+            <h2 className='lk-heading'>Личный кабинет</h2>
+            <LkForm />
         </>
     )
 }
 
-export default LK
+
+
+

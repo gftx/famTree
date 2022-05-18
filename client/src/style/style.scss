@@ -4,11 +4,13 @@
 @import './layout/header.scss';
 @import './layout/footer.scss';
 @import './global/profilePage.scss';
+@import './global/lk.scss';
+
 
 
 // settings 
 body {
-    background-color: #F4F9E2;
+    background-color: #ededed;
     font-family: Roboto, serif;
     color: #22356F;
 }

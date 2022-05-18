@@ -8,7 +8,6 @@ import {
 import { api } from '../../api';
 import arrow from '../../images/arrow.png';
 import { IProfile } from '../../interfaces';
-import { ColorButton } from '../../views/buttons/colorButton';
 import ParentView from '../../views/profile/parentView';
 
 const queryString = require('query-string');
@@ -59,9 +58,9 @@ export function ProfilePage() {
 
 	return (
 		<main>
-			<ColorButton>
+			<button>
 				<Link to='/'>Вернуться на главную</Link>
-			</ColorButton>
+			</button>
 			{profile !== undefined && (
 				<>
 					<div className='profilePage'>
