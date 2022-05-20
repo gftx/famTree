@@ -12,7 +12,11 @@ require('./config')
 // Create global app object
 const app = express();
 app.use(json());
-app.use(cors());
+app.use(cors({
+	origin: true,
+	methods: ["GET", "POST", "PUT", "DELETE"],
+	credentials: true,
+}));
 
 
 app.listen(5000, () => {

@@ -17,7 +17,35 @@ router.get('/persons', (request: Request, response: Response) => {
     })
 })
 
-router.post('/persons', (request: Request, response: Response) => {
+const multer = require('multer')
+const storage = multer.diskStorage({
+    destination(req: any, file: any, cb: (arg0: any, arg1: any) => void) {
+        cb(null, './')
+    },
+    filename(req: any, file: any, cb: (arg0: any, arg1: any) => void) {
+        cb(null, `uploads/${Date.now()}-${file.originalname}`)
+    }
+})
+
+const upload = multer({
+    storage: storage
+})
+
+
+router.post('/image', upload.single('image'), (request: Request, response: Response) => {
+    // @ts-ignore
+    console.log('file ',request.file)
+    console.log( request.body)
+
+    response.send({
+        //@ts-ignore
+        data: request.file,
+        msg: 'ti loh'
+    })
+})
+
+
+router.post('/persons', upload.single('image'), (request: Request, response: Response) => {
     const person: IPerson = request.body;
     const {
         name,
@@ -42,6 +70,7 @@ router.post('/persons', (request: Request, response: Response) => {
                 })
             }
             return response.send({
+                data: request.body,
                 message: 'человек успешно создан',
             });
         }

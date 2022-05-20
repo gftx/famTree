@@ -21,11 +21,15 @@ class Api {
     }
 
     postPerson = async (values: any) => {
-        console.log('postPerson', values)
+        console.log('postPerson api', values)
         return axios({
             method: 'POST',
             url: `${this.url}/persons`,
-            data: values,
+            headers: {
+                'Accept': 'multipart/form-data',
+                'Content-Type': 'multipart/form-data',
+            },
+            data: {image: values},
         })
     }
 }
