@@ -44,20 +44,23 @@ router.post('/image', upload.single('image'), (request: Request, response: Respo
     })
 })
 
-
 router.post('/persons', upload.single('image'), (request: Request, response: Response) => {
-    const person: IPerson = request.body;
+    const person:any = request.body;
     const {
         name,
         surname,
         birthdate,
-        image = null,
         fatherId = null,
         motherId = null,
         brothersIds = null,
         sistersIds = null,
         childrenIds = null
     } = person
+
+    //@ts-ignore
+    const image = request.file?.filename
+    console.log('person', person)
+    console.log('image', image)
 
     pool.query(`INSERT INTO public.person (name, surname, birthdate, image, father_id, mother_id, brothers, sisters, children)
         VALUES (\'${name}\', \'${surname}\', \'${birthdate}\', \'${image}\', \'${fatherId}\',

@@ -95,11 +95,11 @@ export function ProfilePage() {
 									{profile.name} {profile.surname}
 								</h2>
 								<h3>{profile.birth_date}</h3>
-								{profile.brothersIDs.length !== 0 && (
+								{profile.brothersIDs?.length !== 0 && (
 									<div className='profilePage-children-container'>
 										<p>Братья:</p>
 										<ul>
-											{profile.brothersIDs.map((item: number) => (
+											{profile.brothersIDs?.map((item: number) => (
 												<li key={item} onClick={() => goToProfile(`${item}`)}>
 													{findPerson(item).name} {findPerson(item).surname}
 												</li>
@@ -107,11 +107,11 @@ export function ProfilePage() {
 										</ul>
 									</div>
 								)}
-								{profile.sistersIDs.length !== 0 && (
+								{profile.sistersIDs?.length !== 0 && (
 									<div className='profilePage-children-container'>
 										<p>Сестры:</p>
 										<ul>
-											{profile.sistersIDs.map((item: number) => (
+											{profile.sistersIDs?.map((item: number) => (
 												<li key={item} onClick={() => goToProfile(`${item}`)}>
 													{findPerson(item).name} {findPerson(item).surname}
 												</li>
@@ -119,11 +119,11 @@ export function ProfilePage() {
 										</ul>
 									</div>
 								)}
-								{profile.childrenIds.length !== 0 && (
+								{profile.childrenIds?.length !== 0 && (
 									<div className='profilePage-children-container'>
 										<p>Дети:</p>
 										<ul>
-											{profile.childrenIds.map((item: number) => (
+											{profile.childrenIds?.map((item: number) => (
 												<li key={item} onClick={() => goToProfile(`${item}`)}>
 													{findPerson(item).name} {findPerson(item).surname}
 												</li>

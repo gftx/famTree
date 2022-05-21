@@ -1,3 +1,5 @@
+import {MAIN_URL} from "../../api";
+
 export default function MainCard(props: any) {
 	const {
 		name,

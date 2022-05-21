@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import { userRoute } from './routes/auth';
 import { personsRouter } from './routes/person';
+import * as path from "path";
 
 // init database
 require('./config')
@@ -17,6 +18,7 @@ app.use(cors({
 	methods: ["GET", "POST", "PUT", "DELETE"],
 	credentials: true,
 }));
+app.use('/', express.static(path.join(__dirname, '/')));
 
 
 app.listen(5000, () => {
