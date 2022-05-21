@@ -32,18 +32,6 @@ const upload = multer({
 })
 
 
-router.post('/image', upload.single('image'), (request: Request, response: Response) => {
-    // @ts-ignore
-    console.log('file ',request.file)
-    console.log( request.body)
-
-    response.send({
-        //@ts-ignore
-        data: request.file,
-        msg: 'ti loh'
-    })
-})
-
 router.post('/persons', upload.single('image'), (request: Request, response: Response) => {
     const person:any = request.body;
     const {

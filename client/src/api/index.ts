@@ -40,13 +40,6 @@ class Api {
         } catch (error) {
             console.error(error)
         }
-
-            // .then((response) => {
-            //     if (response.status === 200) {
-            //         console.log('success upload')
-            //     }
-            // });
-        console.log('result ',result)
        return result
     }
 }

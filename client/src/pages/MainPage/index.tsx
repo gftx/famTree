@@ -7,7 +7,7 @@ import { IProfile } from '../../interfaces';
 const MainPage = () => {
 	const [persons, setPersons] = useState<[]>([]);
 
-	const getPersons = async () => {
+	const getPersons: () => void = async () => {
 		const res: any = await api.getPersons();
 		setPersons(res.data.data);
 	};
