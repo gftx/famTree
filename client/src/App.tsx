@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { MainPage, LogInPage, ProfilePage } from './pages';
+import { MainPage, PersonalCabinet, ProfilePage } from './pages';
 import { Layout } from './layout'
 import './style/style.scss'
 
@@ -15,7 +15,7 @@ function App() {
           <Route path='/' element={
             <MainPage />} />
           <Route path='/login' element={
-            <LogInPage />} />
+            <PersonalCabinet />} />
           <Route path='/profile' element={
             <ProfilePage />} />
         </Routes>

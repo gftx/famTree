@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react'
 import MainCard from '../../views/main/mainCard';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -8,7 +7,7 @@ import { IProfile } from '../../interfaces';
 const MainPage = () => {
 	const [persons, setPersons] = useState<[]>([]);
 
-	const getPersons = async () => {
+	const getPersons: () => void = async () => {
 		const res: any = await api.getPersons();
 		setPersons(res.data.data);
 	};

@@ -1,5 +1,5 @@
 import { MainPage } from "./MainPage";
-import { LogInPage } from "./LogInPage";
+import { PersonalCabinet } from "./PersonalCabinet";
 import { ProfilePage } from "./ProfilePage"
 
-export { MainPage, LogInPage, ProfilePage }
+export { MainPage, PersonalCabinet, ProfilePage }
