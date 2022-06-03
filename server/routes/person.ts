@@ -57,7 +57,7 @@ router.post('/persons', upload.single('image'), (request: Request, response: Res
             if (err) {
                 console.error('Error executing query', err.stack);
                 return response.send({
-                    message: err.stack
+                    message: 'произошла ошибка при создании'
                 })
             }
             return response.send({

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../api";
 import axios from "axios";
 import { useForm } from 'react-hook-form';
@@ -13,6 +13,18 @@ const validationSchema = Yup.object().shape({
 });
 
 function LkForm() {
+    const [persons, setPersons] = useState([])
+    const [message, setMessage] = useState('')
+
+    const getPersons:() => void = async () => {
+        const res = await api.getPersons()
+        setPersons(res.data.data)
+    }
+
+    useEffect(() => {
+        getPersons()
+    },[])
+
     const {
         register,
         handleSubmit,
@@ -35,7 +47,7 @@ function LkForm() {
             }
         }
         const res = await api.postPerson(formData)
-        console.log('response',res)
+        setMessage(res?.data.message)
     };
 
     return (
@@ -85,6 +97,7 @@ function LkForm() {
                         Сбросить
                     </button>
                 </div>
+                <div>{message}</div>
             </form>
         </>
     );
