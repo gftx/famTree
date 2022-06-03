@@ -94,7 +94,7 @@ export function ProfilePage() {
 								<h2>
 									{profile.name} {profile.surname}
 								</h2>
-								<h3>{profile.birth_date}</h3>
+								<h3>{profile.birthdate}</h3>
 								{profile.brothersIDs?.length !== 0 && (
 									<div className='profilePage-children-container'>
 										<p>Братья:</p>

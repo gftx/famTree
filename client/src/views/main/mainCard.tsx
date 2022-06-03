@@ -4,7 +4,7 @@ export default function MainCard(props: any) {
 	const {
 		name,
 		surname,
-		birth_date,
+		birthdate,
 		image,
 		fatherID,
 		motherID,
@@ -36,7 +36,7 @@ export default function MainCard(props: any) {
 				<div className='mainCard-mainInfo-name'>
 					{name} {surname}
 				</div>
-				<div className='mainCard-mainInfo-birthDate'>{birth_date}</div>
+				<div className='mainCard-mainInfo-birthDate'>{birthdate}</div>
 			</div>
 			<div className='mainCard-siblings'>
 				{fatherID && (
