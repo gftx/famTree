@@ -2,7 +2,7 @@
 
 TypeScript (client React + server Express + PostgreSQL) family tree application
 
-## How to start:
+### How to start:
 
 1) you need to create .env file into server directory and add to it your database credentials
 2) write in the terminal </br>
