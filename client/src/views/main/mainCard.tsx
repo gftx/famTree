@@ -1,4 +1,4 @@
-import {MAIN_URL} from "../../api";
+import { MAIN_URL } from '../../api';
 
 export default function MainCard(props: any) {
 	const {
@@ -12,8 +12,10 @@ export default function MainCard(props: any) {
 		brothersIDs,
 		goToProfile,
 		childrenIds,
-        persons
+		persons,
 	} = props;
+
+	console.log(typeof birthdate)
 
 	const findName = (id: any) => {
 		for (let i = 0; i < persons.length; i++) {
@@ -36,7 +38,9 @@ export default function MainCard(props: any) {
 				<div className='mainCard-mainInfo-name'>
 					{name} {surname}
 				</div>
-				<div className='mainCard-mainInfo-birthDate'>{birthdate}</div>
+				{birthdate && (
+					<div className='mainCard-mainInfo-birthDate'>{birthdate}</div>
+				)}
 			</div>
 			<div className='mainCard-siblings'>
 				{fatherID && (

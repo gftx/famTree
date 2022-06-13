@@ -1,4 +1,4 @@
-interface IProfile {
+interface IPerson {
 	id: number;
 	name: string;
 	surname: string;
@@ -11,7 +11,7 @@ interface IProfile {
 	childrenIds: number[];
 }
 
-interface UserSubmitForm {
+interface IUserSubmitForm {
 	name: string;
 	surname: string;
 	birthdate: string;
@@ -21,7 +21,11 @@ interface UserSubmitForm {
 	sistersIDs: number[];
 	brothersIDs: number[];
 	childrenIds: number[];
-};
+}
 
+interface ISelectValues {
+	value: number;
+	label: string;
+}
 
-export type { IProfile, UserSubmitForm };
+export type { IPerson, IUserSubmitForm, ISelectValues };

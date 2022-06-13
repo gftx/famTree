@@ -7,13 +7,13 @@ import {
 } from 'react-router-dom';
 import { api } from '../../api';
 import arrow from '../../images/arrow.png';
-import { IProfile } from '../../interfaces';
+import { IPerson } from '../../interfaces';
 import ParentView from '../../views/profile/parentView';
 
 const queryString = require('query-string');
 
 export function ProfilePage() {
-	const [profile, setProfile] = useState<IProfile>();
+	const [profile, setProfile] = useState<IPerson>();
 	const [persons, setPersons] = useState<[]>([]);
 
 	const getPersons = async () => {

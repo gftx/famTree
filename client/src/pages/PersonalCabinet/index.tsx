@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import {Link} from "react-router-dom";
 import LoginForm from '../../components/loginForm';
-import LK from "../../components/lk";
+import { LK } from "../../components/lk";
 
 const PersonalCabinet = () => {
 

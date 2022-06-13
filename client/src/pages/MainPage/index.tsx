@@ -2,7 +2,7 @@ import MainCard from '../../views/main/mainCard';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { api } from '../../api';
-import { IProfile } from '../../interfaces';
+import { IPerson } from '../../interfaces';
 
 const MainPage = () => {
 	const [persons, setPersons] = useState<[]>([]);
@@ -33,7 +33,7 @@ const MainPage = () => {
 				переходите к человеку и все увидите, приятного времяпрепровождения!
 			</p>
 			<div className='main-container'>
-				{persons.map((item: IProfile) => (
+				{persons.map((item: IPerson) => (
 					<div
 						className='mainCard'
 						key={item.id}
