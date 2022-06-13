@@ -1,5 +1,3 @@
-import { MAIN_URL } from '../../api';
-
 export default function MainCard(props: any) {
 	const {
 		name,
@@ -14,8 +12,6 @@ export default function MainCard(props: any) {
 		childrenIds,
 		persons,
 	} = props;
-
-	console.log(typeof birthdate)
 
 	const findName = (id: any) => {
 		for (let i = 0; i < persons.length; i++) {

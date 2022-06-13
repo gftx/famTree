@@ -8,7 +8,7 @@ import { FormInput } from '../../views/input';
 
 import { isEmpty } from '../../utils/isEmtyObj';
 import { FormSelectMulti } from './FormSelectMulti';
-import { FormSelect } from './FormSelect'
+import { FormSelect } from './FormSelect';
 
 const validationSchema = Yup.object().shape({
 	name: Yup.string().required('Имя обязательно'),
@@ -54,18 +54,35 @@ function LkForm() {
 
 	const onSubmit = async (data: IUserSubmitForm) => {
 		const formData = new FormData();
-		console.log('data', data);
+
+		if (Array.isArray(data.brothersIDs)) {
+			data.brothersIDs = data.brothersIDs.join(',');
+		}
+		if (Array.isArray(data.sistersIDs)) {
+			data.sistersIDs = data.sistersIDs.join(',');
+		}
+		if (Array.isArray(data.childrenIds)) {
+			data.childrenIds = data.childrenIds.join(',');
+		}
 
 		for (const key in data) {
-			if (key === 'image') {
-				// @ts-ignore
-				formData.append(key, data[key][0]);
-			} else {
-				// @ts-ignore
-				formData.append(key, data[key]);
+			// @ts-ignore
+			console.log(`key = ${key}, data = ${data[key]}`);
+			// @ts-ignore
+			if (data[key] !== undefined) {
+				if (key === 'image') {
+					// @ts-ignore
+					if (data[key][0] !== undefined) {
+						// @ts-ignore
+						formData.append(key, data[key][0]);
+					}
+				} else {
+					// @ts-ignore
+					formData.append(key, data[key]);
+				}
 			}
 		}
-		const res = await api.postPerson(data);
+		const res = await api.postPerson(formData);
 		setMessage(res?.data.message);
 	};
 

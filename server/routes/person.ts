@@ -47,8 +47,6 @@ router.post('/persons', upload.single('image'), (request: Request, response: Res
 
     //@ts-ignore
     const image = request.file?.filename
-    console.log('person', person)
-    console.log('image', image)
 
     pool.query(`INSERT INTO public.person (name, surname, birthdate, image, father_id, mother_id, brothers, sisters, children)
         VALUES (\'${name}\', \'${surname}\', \'${birthdate}\', \'${image}\', \'${fatherId}\',

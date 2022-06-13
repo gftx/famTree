@@ -18,9 +18,9 @@ interface IUserSubmitForm {
 	image: Blob | undefined;
 	fatherID: number;
 	motherID: number;
-	sistersIDs: number[];
-	brothersIDs: number[];
-	childrenIds: number[];
+	sistersIDs: number[] | string;
+	brothersIDs: number[] | string;
+	childrenIds: number[] | string;
 }
 
 interface ISelectValues {
