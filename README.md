@@ -1,5 +1,7 @@
 # famTree
 
+TypeScript (client React + server Express + PostgreSQL) family tree application
+
 ## How to start:
 
 1) you need to create .env file into server directory and add to it your database credentials
