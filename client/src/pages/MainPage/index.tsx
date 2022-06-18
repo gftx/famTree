@@ -5,7 +5,7 @@ import { api } from '../../api';
 import { IPerson } from '../../interfaces';
 
 const MainPage = () => {
-	const [persons, setPersons] = useState<[]>([]);
+	const [persons, setPersons] = useState<IPerson[]>([]);
 
 	const getPersons: () => void = async () => {
 		const res: any = await api.getPersons();

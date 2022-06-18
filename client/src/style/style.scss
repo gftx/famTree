@@ -8,11 +8,14 @@
 
 
 
-// settings 
+// settings
+* {
+    color: #22356F;
+}
 body {
     background-color: #ededed;
-    font-family: Roboto, serif;
-    color: #22356F;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro',
+    Arial, sans-serif;
 }
 
 main {

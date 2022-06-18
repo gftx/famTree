@@ -16,8 +16,6 @@ class Api {
             url: `${this.url}api/persons`,
         });
 
-        console.log(res)
-
         for (const el of res.data.data) {
             serializer(el)
         }
@@ -25,11 +23,6 @@ class Api {
     }
 
     postPerson = async (values: any) => {
-        console.log('-----------')
-        console.log('API LOGS:')
-        for(let [name, value] of values) {
-            console.log(`${name} = ${value} ${typeof value}`); // key1=value1, потом key2=value2
-          }
         let result
         try {
             result = await axios.post(`${this.url}api/persons`, values, {
@@ -47,7 +40,6 @@ class Api {
         } catch (error) {
             console.error(error)
         }
-        console.log('-----------')
        return result
     }
 }

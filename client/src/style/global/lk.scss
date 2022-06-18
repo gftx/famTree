@@ -9,7 +9,40 @@
   &-heading {
     margin: 20px;
   }
-  input {
-    border: 1px solid black;
+
+  &-tabs {
+    display: flex;
+    &__tab {
+      cursor: pointer;
+      margin: 10px;
+      color: #333;
+      padding: 0 0 5px 0;
+      border-bottom:1px solid #333;
+
+      &:hover {
+        color: #ffae00;
+        border-bottom:1px solid #ffae00;
+      }
+    }
+
+  }
+
+  &-personsRow {
+    &-item {
+      display: flex;
+
+      &__name {
+        margin-right: 5px;
+      }
+
+      &__options {
+        padding: 3px;
+        border: 1px solid #333;
+        border-radius: 5px;
+      }
+    }
+  }
+  .form-group {
+    margin: 10px 0;
   }
 }
