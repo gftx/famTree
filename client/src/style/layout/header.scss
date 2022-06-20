@@ -1,8 +1,17 @@
 .header {
   width: 100%;
-  background-color: transparent;
+  background-color: #eee;
   padding: 24px;
   position: relative;
+
+  &-backLink {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    &:hover {
+      color: #ffae00;
+    }
+  }
 
   &-title {
     text-align: center;
@@ -12,10 +21,14 @@
     font-family: Roboto, serif;
   }
 
-  &-admin__link {
+  &-adminLink {
     position: absolute;
     right: 10px;
     top: 10px;
+    &:hover {
+      color: #ffae00;
+
+    }
   }
 
   @media (max-width: 500px) {

@@ -1,13 +1,15 @@
 .lk {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  &-backLink {
-    margin:10px
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+
   &-heading {
     margin: 20px;
+    font-size: 24px;
+    letter-spacing: 2px;
   }
 
   &-tabs {
@@ -30,15 +32,26 @@
   &-personsRow {
     &-item {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      width: 600px;
+      border-radius: 4px;
+
+      &:nth-child(odd) {
+        background-color: #eee;
+      }
 
       &__name {
-        margin-right: 5px;
+        margin: 0 15px;
+        width: 200px;
       }
 
       &__options {
         padding: 3px;
         border: 1px solid #333;
-        border-radius: 5px;
+        border-radius: 4px;
+        margin: 10px 15px;
       }
     }
   }

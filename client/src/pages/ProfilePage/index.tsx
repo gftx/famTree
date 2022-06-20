@@ -58,9 +58,6 @@ export function ProfilePage() {
 
 	return (
 		<main>
-			<button>
-				<Link to='/'>Вернуться на главную</Link>
-			</button>
 			{profile !== undefined && (
 				<>
 					<div className='profilePage'>

@@ -1,5 +1,5 @@
-import axios from "axios"
-import {serializer} from "./serializer";
+import axios from 'axios'
+import { serializer } from './serializer'
 
 const MAIN_URL:string | undefined = process.env.REACT_APP_MAIN_URL
 
@@ -41,6 +41,21 @@ class Api {
             console.error(error)
         }
        return result
+    }
+
+    deletePerson = async (id: number) => {
+        try {
+            return await axios({
+                method: 'DELETE',
+                url: `${this.url}api/persons`,
+                data: { id: id}
+            })
+        }
+        catch (error) {
+            return {
+                error: error
+            }
+        }
     }
 }
 

@@ -67,8 +67,6 @@ function LkForm() {
 
 		for (const key in data) {
 			// @ts-ignore
-			console.log(`key = ${key}, data = ${data[key]}`);
-			// @ts-ignore
 			if (data[key] !== undefined) {
 				if (key === 'image') {
 					// @ts-ignore
