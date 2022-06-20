@@ -29,8 +29,7 @@ const MainPage = () => {
 	return (
 		<main className='main'>
 			<p className='main-shout'>
-				Сайт - дерево семьи Дубановых. для просмотра родственных связей,
-				переходите к человеку и все увидите, приятного времяпрепровождения!
+				какая-то фраза
 			</p>
 			<div className='main-container'>
 				{persons.map((item: IPerson) => (

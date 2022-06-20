@@ -16,12 +16,9 @@ class Api {
             url: `${this.url}api/persons`,
         });
 
-        console.log('first res',res.data.data)
-
         for (const el of res.data.data) {
             serializer(el)
         }
-        console.log('updated res', res.data.data)
         return res
     }
 

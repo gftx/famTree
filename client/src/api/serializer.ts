@@ -13,6 +13,12 @@ export const serializer = (data: SerializerProps) => {
   if (typeof data.children === 'string') {
     data.children = data.children.split(',')
   }
+  if (typeof data.brothers === 'string') {
+    data.brothers = data.brothers.split(',')
+  }
+  if (typeof data.sisters === 'string') {
+    data.sisters = data.sisters.split(',')
+  }
 
   if (data.image !== undefined) {
     data.image = `${MAIN_URL}${data.image}`
