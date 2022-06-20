@@ -2,7 +2,7 @@ import { ISelectValues } from '../interfaces'
 
 export type InputPropsType = {
     label: string
-    inputName: string 
+    inputName: string
     type: string
     register: any
     errors?: any
