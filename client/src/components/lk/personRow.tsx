@@ -33,26 +33,30 @@ const PersonRow: FC = () => {
 
   return (
     <ul className='lk-personsRow'>
-      {persons.map(item => (
-        <li key={item.id} className='lk-personsRow-item'>
-          <div className='lk-personsRow-item__name'>{item.name} {item.surname}</div>
-          <a data-tip='React-tooltip' className='lk-personsRow-item__options'> ◕ </a>
-          <ReactTooltip
-            getContent={() => (
-              <div>
-                <p>Опции:</p>
-                <button className='lk-personsRow-item__options' onClick={() => changeHandler(item.id)}>изменить</button>
-                <button className='lk-personsRow-item__options' onClick={() => deleteHandler(item.id)}>удалить</button>
-              </div>
-            )}
-            effect='solid'
-            delayHide={300}
-            delayUpdate={500}
-            place='top'
-            type='light'
-          />
-        </li>
-      ))}
+      {persons.map(item => {
+        return (
+          <li key={item.id} className='lk-personsRow-item'>
+            <div className='lk-personsRow-item__name'>{item.name} {item.surname}</div>
+            <a data-for={`React-tooltip-${item.id}`} data-tip={`React-tooltip-${item.id}`} className='lk-personsRow-item__options'> ◕ </a>
+            <ReactTooltip
+              id={`React-tooltip-${item.id}`}
+              getContent={() => (
+                <div>
+                  <p>Опции:</p>
+                  <button className='lk-personsRow-item__options' onClick={() => changeHandler(item.id)}>изменить</button>
+                  <button className='lk-personsRow-item__options' onClick={() => deleteHandler(item.id)}>удалить</button>
+                </div>
+              )
+              }
+              effect='solid'
+              delayHide={300}
+              delayUpdate={500}
+              place='top'
+              type='light'
+            />
+          </li>
+        )
+      })}
     </ul>
   )
 }

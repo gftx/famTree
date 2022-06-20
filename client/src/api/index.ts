@@ -16,9 +16,12 @@ class Api {
             url: `${this.url}api/persons`,
         });
 
+        console.log('first res',res.data.data)
+
         for (const el of res.data.data) {
             serializer(el)
         }
+        console.log('updated res', res.data.data)
         return res
     }
 
@@ -33,7 +36,7 @@ class Api {
                     return data
                 }],
                 onUploadProgress: progressEvent => {
-                    let complete = (progressEvent.loaded / progressEvent.total * 100 | 0) + '%'
+                    const complete = (progressEvent.loaded / progressEvent.total * 100 | 0) + '%'
                     console.log('complete: ', complete)
                 }
             });

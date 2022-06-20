@@ -32,7 +32,7 @@ function LkForm() {
 
 	useEffect(() => {
 		if (!isEmpty(persons)) {
-			let values: ISelectValues[] = [];
+			const values: ISelectValues[] = [];
 			for (const key in persons) {
 				values.push({
 					value: persons[key].id,
@@ -55,14 +55,14 @@ function LkForm() {
 	const onSubmit = async (data: IUserSubmitForm) => {
 		const formData = new FormData();
 
-		if (Array.isArray(data.brothersIDs)) {
-			data.brothersIDs = data.brothersIDs.join(',');
+		if (Array.isArray(data.brothers)) {
+			data.brothers = data.brothers.join(',');
 		}
-		if (Array.isArray(data.sistersIDs)) {
-			data.sistersIDs = data.sistersIDs.join(',');
+		if (Array.isArray(data.sisters)) {
+			data.sisters = data.sisters.join(',');
 		}
-		if (Array.isArray(data.childrenIds)) {
-			data.childrenIds = data.childrenIds.join(',');
+		if (Array.isArray(data.children)) {
+			data.children = data.children.join(',');
 		}
 
 		for (const key in data) {
@@ -118,31 +118,31 @@ function LkForm() {
 				control={control}
 				personsValues={personsValues}
 				placeholder='Папа'
-				name='fatherID'
+				name='father_id'
 			/>
 			<FormSelect
 				control={control}
 				personsValues={personsValues}
 				placeholder='Мама'
-				name='motherID'
+				name='mother_id'
 			/>
 			<FormSelectMulti
 				control={control}
 				personsValues={personsValues}
 				placeholder='Братья'
-				name='brothersIDs'
+				name='brothers'
 			/>
 			<FormSelectMulti
 				control={control}
 				personsValues={personsValues}
 				placeholder='Сестры'
-				name='sistersIDs'
+				name='sisters'
 			/>
 			<FormSelectMulti
 				control={control}
 				personsValues={personsValues}
 				placeholder='Дети'
-				name='childrenIds'
+				name='children'
 			/>
 			<div className='form-group'>
 				<button type='submit' className='btn btn-primary'>

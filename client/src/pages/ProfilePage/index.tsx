@@ -6,7 +6,6 @@ import {
 	Link,
 } from 'react-router-dom';
 import { api } from '../../api';
-import arrow from '../../images/arrow.png';
 import { IPerson } from '../../interfaces';
 import ParentView from '../../views/profile/parentView';
 
@@ -20,7 +19,7 @@ export function ProfilePage() {
 		const res: any = await api.getPersons();
 		setPersons(res.data.data);
 	};
-    
+
 	useEffect(() => {
 		getPersons();
 	}, []);
@@ -37,10 +36,10 @@ export function ProfilePage() {
 		}
 	}, [location.search, persons]);
 
-	const findPerson = (id: number) => {
+	const findPerson = (id: number | string) => {
 		for (let i = 0; i < persons.length; i++) {
 			const el: any = persons[i];
-			if (el.id === id) {
+			if (el.id == id) {
 				return el;
 			}
 		}
@@ -58,25 +57,26 @@ export function ProfilePage() {
 
 	return (
 		<main>
+			<Link className='header-backLink' to='/'> на главную</Link>
 			{profile !== undefined && (
 				<>
 					<div className='profilePage'>
 						<div className='profilePage-mainScreen-container'>
-							{(profile.fatherID || profile.motherID) && (
+							{(profile.father_id || profile.father_id) && (
 								<div className='profilePage-mobile'>
-									{profile.fatherID && (
+									{profile.father_id && (
 										<ParentView
 											goToProfile={goToProfile}
 											findPerson={findPerson}
-											id={profile.fatherID}
+											id={profile.father_id}
 											parent='Папа'
 										/>
 									)}
-									{profile.motherID && (
+									{profile.mother_id && (
 										<ParentView
 											goToProfile={goToProfile}
 											findPerson={findPerson}
-											id={profile.motherID}
+											id={profile.mother_id}
 											parent='Мама'
 										/>
 									)}
@@ -92,11 +92,11 @@ export function ProfilePage() {
 									{profile.name} {profile.surname}
 								</h2>
 								<h3>{profile.birthdate}</h3>
-								{profile.brothersIDs?.length !== 0 && (
+								{profile.brothers !== undefined && (
 									<div className='profilePage-children-container'>
 										<p>Братья:</p>
 										<ul>
-											{profile.brothersIDs?.map((item: number) => (
+											{profile.brothers?.map((item: number | string) => (
 												<li key={item} onClick={() => goToProfile(`${item}`)}>
 													{findPerson(item).name} {findPerson(item).surname}
 												</li>
@@ -104,11 +104,11 @@ export function ProfilePage() {
 										</ul>
 									</div>
 								)}
-								{profile.sistersIDs?.length !== 0 && (
+								{profile.sisters !== undefined && (
 									<div className='profilePage-children-container'>
 										<p>Сестры:</p>
 										<ul>
-											{profile.sistersIDs?.map((item: number) => (
+											{profile.sisters?.map((item: number) => (
 												<li key={item} onClick={() => goToProfile(`${item}`)}>
 													{findPerson(item).name} {findPerson(item).surname}
 												</li>
@@ -116,11 +116,11 @@ export function ProfilePage() {
 										</ul>
 									</div>
 								)}
-								{profile.childrenIds?.length !== 0 && (
+								{profile.children !== undefined && (
 									<div className='profilePage-children-container'>
 										<p>Дети:</p>
 										<ul>
-											{profile.childrenIds?.map((item: number) => (
+											{profile.children?.map((item: number) => (
 												<li key={item} onClick={() => goToProfile(`${item}`)}>
 													{findPerson(item).name} {findPerson(item).surname}
 												</li>
@@ -129,26 +129,22 @@ export function ProfilePage() {
 									</div>
 								)}
 							</div>
-							{(profile.fatherID || profile.motherID) && (
+							{(profile.father_id || profile.mother_id) && (
 								<>
-									<div className='profilePage-arrows'>
-										<img src={arrow} alt='arrow' width='174px' height='24px' />
-										<img src={arrow} alt='arrow' width='174px' height='24px' />
-									</div>
 									<div className='profilePage-parents'>
-										{profile.fatherID && (
+										{profile.father_id && (
 											<ParentView
 												goToProfile={goToProfile}
 												findPerson={findPerson}
-												id={profile.fatherID}
+												id={profile.father_id}
 												parent='Папа'
 											/>
 										)}
-										{profile.motherID && (
+										{profile.mother_id && (
 											<ParentView
 												goToProfile={goToProfile}
 												findPerson={findPerson}
-												id={profile.motherID}
+												id={profile.mother_id}
 												parent='Мама'
 											/>
 										)}

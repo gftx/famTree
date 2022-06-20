@@ -4,11 +4,11 @@ interface IPerson {
 	surname: string;
 	birthdate: string;
 	image: string;
-	fatherID: number;
-	motherID: number;
-	sistersIDs: number[];
-	brothersIDs: number[];
-	childrenIds: number[];
+	father_id: number;
+	mother_id: number;
+	sisters: number[];
+	brothers: number[];
+	children: number[];
 }
 
 interface IUserSubmitForm {
@@ -16,11 +16,11 @@ interface IUserSubmitForm {
 	surname: string;
 	birthdate: string;
 	image: Blob | undefined;
-	fatherID: number;
-	motherID: number;
-	sistersIDs: number[] | string;
-	brothersIDs: number[] | string;
-	childrenIds: number[] | string;
+	father_id: string;
+	mother_id: string;
+	sisters: string[] | string;
+	brothers: string[] | string;
+	children: string[] | string;
 }
 
 interface ISelectValues {

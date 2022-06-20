@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className='header'>
-      <h3 className='header-title'>Dubanov's Family</h3>
+      <h3 className='header-title'>Древо семьи Дубановых</h3>
 
       {LKPage ? (
         <Link className='header-backLink' to='/'> на главную</Link>

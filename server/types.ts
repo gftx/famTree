@@ -4,9 +4,9 @@ export interface IPerson {
     surname: string;
     birthdate: string;
     image: string;
-    fatherId: number;
-    motherId: number;
-    sistersIds: number[];
-    brothersIds: number[];
-    childrenIds: number[];
+    father_id: number;
+    mother_id: number;
+    sisters: number[];
+    brothers: number[];
+    children: number[];
 }

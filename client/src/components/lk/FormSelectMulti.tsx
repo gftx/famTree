@@ -20,7 +20,7 @@ const FormSelectMulti = ({
 				options={personsValues}
 				value={personsValues.filter(option => value?.includes(option.value))}
 				onChange={personsValues =>
-					//@ts-ignore
+					// @ts-ignore
 					onChange(personsValues?.map(option => option.value))
 				}
 				onBlur={onBlur}

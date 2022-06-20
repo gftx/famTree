@@ -1,4 +1,4 @@
-import { ISelectValues } from "../interfaces"
+import { ISelectValues } from '../interfaces'
 
 export type InputPropsType = {
     label: string
@@ -6,7 +6,21 @@ export type InputPropsType = {
     type: string
     register: any
     errors?: any
-} 
+}
+
+export type SerializerProps = {
+    id: number;
+    name: string;
+    surname: string;
+    birthdate: string;
+    image: string;
+    father_id: string;
+    mother_id: string;
+    sisters: string[] | string;
+    brothers: string[] | string;
+    children: string[] | string;
+}
+
 
 export type FormSelectProps = {
     control: any

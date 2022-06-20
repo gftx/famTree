@@ -40,11 +40,11 @@ router.post(
       name,
       surname,
       birthdate,
-      fatherId = null,
-      motherId = null,
-      brothersIds = null,
-      sistersIds = null,
-      childrenIds = null,
+      father_id,
+      mother_id,
+      brothers,
+      sisters,
+      children,
     } = person
 
     //@ts-ignore
@@ -52,16 +52,16 @@ router.post(
 
     pool.query(
       `INSERT INTO public.person (name, surname, birthdate, image, father_id, mother_id, brothers, sisters, children)
-        VALUES (\'${name}\', \'${surname}\', \'${birthdate}\', \'${image}\', \'${fatherId}\',
-        \'${motherId}\', \'${brothersIds}\', \'${sistersIds}\', \'${childrenIds}\');`,
+        VALUES (\'${name}\', \'${surname}\', \'${birthdate}\', \'${image}\', \'${father_id}\',
+        \'${mother_id}\', \'${brothers}\', \'${sisters}\', \'${children}\');`,
       (err: Error, res: QueryResult) => {
         if (err) {
           console.error('Error executing query', err.stack)
-          return response.send({
+          return response.status(400).send({
             message: 'произошла ошибка при создании',
           })
         }
-        return response.send({
+        return response.status(201).send({
           data: request.body,
           message: 'человек успешно создан',
         })
@@ -78,21 +78,21 @@ router.put('/persons', (request: Request, response: Response) => {
     surname,
     birthdate,
     image,
-    fatherId,
-    motherId,
-    brothersIds,
-    sistersIds,
-    childrenIds,
+    father_id = null,
+    mother_id = null,
+    brothers = null,
+    sisters = null,
+    children = null,
   } = person
 
   pool.query(
     `UPDATE public.person SET "name"=\'${name}\', "surname"=\'${surname}\', "birthdate"=\'${birthdate}\', 
-                "image"=\'${image}\', "father_id"=\'${fatherId}\', "mother_id"=\'${motherId}\', "brothers"=\'${brothersIds}\',
-                "sisters"=\'${sistersIds}\', "children"=\'${childrenIds}\'  WHERE "id"=\'${id}\';`,
+                "image"=\'${image}\', "father_id"=\'${father_id}\', "mother_id"=\'${mother_id}\', "brothers"=\'${brothers}\',
+                "sisters"=\'${sisters}\', "children"=\'${children}\'  WHERE "id"=\'${id}\';`,
     (err: Error, res: QueryResult) => {
       if (err) {
         console.error('Error executing query', err.stack)
-        return response.status(500).send({
+        return response.status(400).send({
           message: err.stack,
         })
       }
@@ -109,20 +109,20 @@ router.delete('/persons', (request: Request, response: Response) => {
   const { id } = request.body
 
   pool.query(
-  	`DELETE from public.person WHERE id=${id}`,
-  	(err: Error, res: QueryResult) => {
-  		if (err) {
-  			console.error('Error executing query', err.stack);
-        return response.status(500).send({
+    `DELETE from public.person WHERE id=${id}`,
+    (err: Error, res: QueryResult) => {
+      if (err) {
+        console.error('Error executing query', err.stack)
+        return response.status(400).send({
           message: err.stack,
         })
-  		}
+      }
 
-  		return response.send({
-  			message: 'человек успешно удален',
-  		});
-  	}
-  );
+      return response.send({
+        message: 'человек успешно удален',
+      })
+    },
+  )
 })
 
 export { router as personsRouter }

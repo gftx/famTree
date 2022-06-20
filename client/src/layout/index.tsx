@@ -1,5 +1,5 @@
-import { Header } from "../views/header"
-import { Footer } from "../views/footer"
+import { Header } from '../views/header'
+import { Footer } from '../views/footer'
 
 const Layout = (props: any) => {
     const { children } = props

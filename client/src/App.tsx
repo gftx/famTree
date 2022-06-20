@@ -8,7 +8,6 @@ import { Layout } from './layout'
 import './style/style.scss'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import errorIcon from './images/errorIcon.svg'
 
 function App() {
   return (
