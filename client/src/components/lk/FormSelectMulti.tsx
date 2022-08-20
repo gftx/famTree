@@ -7,12 +7,14 @@ const FormSelectMulti = ({
 	personsValues,
 	name,
 	placeholder,
+	className
 }: FormSelectProps) => (
 	<Controller
 		name={name}
 		control={control}
 		render={({ field: { value, onChange, onBlur } }) => (
 			<Select
+				className={className}
 				placeholder={placeholder}
 				name={name}
 				isClearable={true}

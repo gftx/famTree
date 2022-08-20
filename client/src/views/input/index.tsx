@@ -1,5 +1,4 @@
 import { InputPropsType } from '../../types';
-import './index.scss'
 
 const FormInput = ({
 	label,
@@ -7,10 +6,10 @@ const FormInput = ({
 	type,
 	register,
 	errors = {},
+	className
 }: InputPropsType) => (
-	<div className='form-group'>
-		<label>{label}</label>
-		<input type={type} {...register(inputName)}  className='input'/>
+	<div>
+		<input type={type} {...register(inputName)}  className={className} placeholder={label}/>
 		{errors[`${inputName}`] && <div>{errors[`${inputName}`]?.message}</div>}
 	</div>
 );

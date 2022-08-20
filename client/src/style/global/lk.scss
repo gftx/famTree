@@ -55,6 +55,25 @@
       }
     }
   }
+  .form {
+    &_input {
+      border: 1px solid #22356F;
+      border-radius: 4px;
+      width: 450px;
+      min-height: 40px;
+      margin-bottom: 15px;
+
+      &_text {
+        padding-left: 10px;
+      }
+      &_image {
+        padding-left: 10px;
+      }
+      &_datepicker {
+        padding-left: 10px;
+      }
+    }
+  }
   .form-group {
     margin: 10px 0;
   }

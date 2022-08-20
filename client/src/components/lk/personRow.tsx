@@ -53,6 +53,7 @@ const PersonRow: FC = () => {
               delayUpdate={500}
               place='top'
               type='light'
+              border={true}
             />
           </li>
         )

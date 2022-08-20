@@ -56,6 +56,27 @@ class Api {
       }
     }
   }
+
+  updatePerson = async (values: any) => {
+    let result
+    try {
+      result = await axios.put(`${this.url}api/persons`, values, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        transformRequest: [function(data) {
+          return data
+        }],
+        onUploadProgress: progressEvent => {
+          const complete = (progressEvent.loaded / progressEvent.total * 100 | 0) + '%'
+          console.log('complete: ', complete)
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
+    return result
+  }
 }
 
 const api = new Api(MAIN_URL)

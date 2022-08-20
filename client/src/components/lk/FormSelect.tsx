@@ -7,12 +7,14 @@ const FormSelect = ({
 	personsValues,
 	name,
 	placeholder,
+	className
 }: FormSelectProps) => (
 	<Controller
 		name={name}
 		control={control}
         render={({ field: { onChange, value } }) => (
             <Select
+								className={className}
                 placeholder={placeholder}
                 options={personsValues}
                 value={personsValues.find(c => c.value === value)}

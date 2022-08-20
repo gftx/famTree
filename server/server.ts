@@ -28,6 +28,3 @@ app.listen(PORT, () => {
 
 app.use('/api/', userRoute);
 app.use('/api/', personsRouter);
-
-// app.use('/api', require('./routes/auth.js'));
-// app.use('/api', require('./routes/persons.js'))
