@@ -11,6 +11,11 @@ interface IPerson {
 	children: number[];
 }
 
+interface IMainCard extends IPerson {
+	persons: IPerson[]
+	goToProfile: (val: string) => void
+}
+
 interface IUserSubmitForm {
 	name: string;
 	surname: string;
@@ -28,4 +33,4 @@ interface ISelectValues {
 	label: string;
 }
 
-export type { IPerson, IUserSubmitForm, ISelectValues };
+export type { IPerson, IUserSubmitForm, ISelectValues, IMainCard };

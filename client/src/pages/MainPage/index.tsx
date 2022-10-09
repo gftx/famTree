@@ -28,36 +28,8 @@ const MainPage = () => {
 
   return (
     <main className='main'>
-      <p className='main-shout'>
-        какая-то фраза
-      </p>
       {persons.length !== 0 && (
         <div className='main-container'>
-          {/* <div className='main-youngest'>
-            <div
-              className='mainCard'
-              key={persons[0].id}
-              onClick={() => goToProfile(`${persons[0].id}`)}
-            >
-              <MainCard
-                persons={persons}
-                goToProfile={goToProfile}
-                {...persons[0]}
-              />
-            </div>
-            <div
-              className='mainCard'
-              key={persons[1].id}
-              onClick={() => goToProfile(`${persons[1].id}`)}
-            >
-              <MainCard
-                persons={persons}
-                goToProfile={goToProfile}
-                {...persons[1]}
-              />
-            </div>
-          </div> */}
-
           {persons.map((item: IPerson) => (
             <div
               className='mainCard'
