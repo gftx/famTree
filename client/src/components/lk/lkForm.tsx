@@ -24,7 +24,6 @@ const validationSchema = Yup.object().shape({
 function LkForm() {
   const [persons, setPersons] = useState<IPerson[]>([]);
   const [personsValues, setPersonsValues] = useState<ISelectValues[]>([]);
-  const [message, setMessage] = useState('');
 
   const getPersons = async () => {
     const res = await api.getPersons();
@@ -91,7 +90,7 @@ function LkForm() {
       .postPerson(formData)
       .then((res) => {
         notification(res?.data.message, false);
-        getPersons()
+        getPersons();
       })
       .catch((err) => console.error(err));
   };
@@ -104,6 +103,7 @@ function LkForm() {
         'birthdate',
         dayjs(startDate).locale('ru').format('DD MMMM YYYY')
       );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate]);
 
   return (
@@ -177,11 +177,10 @@ function LkForm() {
         className='form_input'
       />
       <div className='form-group'>
-        <button type='submit' className='btn btn-primary'>
+        <button type='submit' className='form-group__btn'>
           Добавить человека
         </button>
       </div>
-      <div>{message}</div>
     </form>
   );
 }

@@ -12,13 +12,13 @@ const LK = () => {
         <li
           className='lk-tabs__tab'
           onClick={() => setTabs(false)}
-          style={!tabs ? { color: '#ffae00', borderBottom: '1px solid #ffae00' } : undefined}
+          style={!tabs ? { color: '#333', borderBottom: '1px solid #333' } : undefined}
         >Все люди
         </li>
         <li
           className='lk-tabs__tab'
           onClick={() => setTabs(true)}
-          style={tabs ? { color: '#ffae00', borderBottom: '1px solid #ffae00' } : undefined}
+          style={tabs ? { color: '#333', borderBottom: '1px solid #333' } : undefined}
         >Добавить человека
         </li>
       </ul>

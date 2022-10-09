@@ -1,86 +1,86 @@
 .main {
-	margin: 30px;
+  margin: 30px;
 
-    .main-shout {
-        text-align: center;
-		font-size: 20px;
-        font-style: italic;
-        margin-bottom: 30px;
+  .main-shout {
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+
+  &-container {
+  }
+
+  &-youngest {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainCard {
+    &-container {
+      border: 1px solid #ededed;
+      border-radius: 15px;
+      cursor: pointer;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: max-content;
+
+      &:hover {
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+      }
+    }
+    &-image {
+      width: 250px;
+      object-fit: contain;
+      border-radius: 15px 15px 0 0;
+      max-height: 350px;
     }
 
-	&-container {
-	}
+    &-mainInfo {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      &-name {
+        margin: 10px 0 0;
+        font-weight: bold;
+      }
+      &-birthDate {
+        margin: 5px 0 0;
+      }
+    }
 
-	&-youngest {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-	}
+    &-siblings {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      max-width: 220px;
+      margin: 0 15px 15px;
 
-	.mainCard {
-		&-container {
-			border: 1px solid #ededed;
-			border-radius: 15px;
-			cursor: pointer;
-			margin: 10px;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			height: max-content;
+      p {
+        font-weight: bold;
+      }
 
-			&:hover {
-				box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-			}
-		}
-		&-image {
-			width: 250px;
-			object-fit: contain;
-			border-radius: 15px 15px 0 0;
-			max-height: 350px;
-		}
-
-		&-mainInfo {
-			padding: 10px;
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			&-name {
-				margin: 10px 0 0;
-				font-weight: bold;
-			}
-			&-birthDate {
-				margin: 5px 0 0;
-			}
-		}
-        
-		&-siblings {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			align-items: center;
-			max-width: 220px;
-			margin: 0 15px 15px;
-
-			p {
-				font-weight: bold;
-			}
-
-			&-parent {
-				margin: 10px 10px;
-			}
-			&-brothers {
-				margin: 10px 10px;
-			}
-			&-sisters {
-				margin: 10px 10px;
-			}
-			li {
-				width: max-content;
-				&:hover {
-					color: #135ca5;
-				}
-			}
-		}
-	}
+      &-parent {
+        margin: 10px 10px;
+      }
+      &-brothers {
+        margin: 10px 10px;
+      }
+      &-sisters {
+        margin: 10px 10px;
+      }
+      li {
+        width: max-content;
+        &:hover {
+          color: #135ca5;
+        }
+      }
+    }
+  }
 }

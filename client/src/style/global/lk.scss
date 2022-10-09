@@ -17,16 +17,15 @@
     &__tab {
       cursor: pointer;
       margin: 10px;
-      color: #333;
+      color: #dcdcdc;
       padding: 0 0 5px 0;
-      border-bottom:1px solid #333;
+      border-bottom: 1px solid #dcdcdc;
 
       &:hover {
-        color: #ffae00;
-        border-bottom:1px solid #ffae00;
+        color: #a1a1a1;
+        border-bottom: 1px solid #a1a1a1;
       }
     }
-
   }
 
   &-personsRow {
@@ -55,7 +54,7 @@
   }
   .form {
     &_input {
-      border: 1px solid #22356F;
+      border: 1px solid #ededed;
       border-radius: 4px;
       width: 450px;
       min-height: 40px;
@@ -73,6 +72,18 @@
     }
   }
   .form-group {
-    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+
+    &__btn {
+      border: 1px solid #ededed;
+      border-radius: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 }
