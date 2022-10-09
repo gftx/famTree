@@ -15,7 +15,7 @@ const updateSiblings = (
     case (SIBLING_TYPES.FATHER || SIBLING_TYPES.MOTHER): {
       pool.query(`UPDATE public.person SET "children"=\'${newPersonId}\'  WHERE "id"=${siblingId};`,
         (err: Error, res: QueryResult) => {
-          console.log('upd');
+          if (err) console.error(err)
         });
       break;
     }

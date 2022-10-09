@@ -20,7 +20,7 @@
 
 	.mainCard {
 		&-container {
-			border: 1px solid #62D0DF;
+			border: 1px solid #ededed;
 			border-radius: 15px;
 			cursor: pointer;
 			margin: 10px;
@@ -30,7 +30,6 @@
 			height: max-content;
 
 			&:hover {
-				border: 1px solid #135ca5;
 				box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
 			}
 		}

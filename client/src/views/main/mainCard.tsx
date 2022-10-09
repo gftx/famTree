@@ -4,14 +4,16 @@ export default function MainCard(props: any) {
 		surname,
 		birthdate,
 		image,
-		fatherID,
-		motherID,
-		sistersIDs,
-		brothersIDs,
+		father_id,
+		mother_id,
+		sisters,
+		brothers,
 		goToProfile,
-		childrenIds,
+		children,
 		persons,
 	} = props;
+
+	console.log(props)
 
 	const findName = (id: any) => {
 		for (let i = 0; i < persons.length; i++) {
@@ -39,31 +41,31 @@ export default function MainCard(props: any) {
 				)}
 			</div>
 			<div className='mainCard-siblings'>
-				{fatherID && (
+				{father_id && (
 					<div className='mainCard-siblings-parent'>
 						<p>Папа:</p>
 						<ul>
-							<li onClick={e => profileLink(e, fatherID)}>
-								{findName(fatherID)}
+							<li onClick={e => profileLink(e, father_id)}>
+								{findName(father_id)}
 							</li>
 						</ul>
 					</div>
 				)}
-				{motherID && (
+				{mother_id && (
 					<div className='mainCard-siblings-parent'>
 						<p>Мама:</p>
 						<ul>
-							<li onClick={e => profileLink(e, motherID)}>
-								{findName(motherID)}
+							<li onClick={e => profileLink(e, mother_id)}>
+								{findName(mother_id)}
 							</li>
 						</ul>
 					</div>
 				)}
-				{brothersIDs?.length !== 0 && (
+				{brothers && brothers?.length !== 0 && (
 					<div className='mainCard-siblings-brothers'>
 						<p>Братья:</p>
 						<ul>
-							{brothersIDs?.map((item: any) => (
+							{brothers.map((item: any) => (
 								<li key={item} onClick={e => profileLink(e, item)}>
 									{findName(item)}
 								</li>
@@ -71,11 +73,11 @@ export default function MainCard(props: any) {
 						</ul>
 					</div>
 				)}
-				{sistersIDs?.length !== 0 && (
+				{sisters && sisters?.length !== 0 && (
 					<div className='mainCard-siblings-sisters'>
 						<p>Сестры:</p>
 						<ul>
-							{sistersIDs?.map((item: any) => (
+							{sisters.map((item: any) => (
 								<li key={item} onClick={e => profileLink(e, item)}>
 									{findName(item)}
 								</li>
@@ -83,11 +85,11 @@ export default function MainCard(props: any) {
 						</ul>
 					</div>
 				)}
-				{childrenIds?.length !== 0 && (
+				{children && children?.length !== 0 && (
 					<div className='mainCard-siblings-children'>
 						<p>Дети:</p>
 						<ul>
-							{childrenIds?.map((item: any) => (
+							{children.map((item: any) => (
 								<li key={item} onClick={e => profileLink(e, item)}>
 									{findName(item)}
 								</li>

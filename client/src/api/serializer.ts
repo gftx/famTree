@@ -20,9 +20,9 @@ export const serializer = (data: SerializerProps) => {
     data.sisters = data.sisters.split(',')
   }
 
-  if (data.image !== undefined) {
+  if (data.image) {
     data.image = `${MAIN_URL}${data.image}`
   } else {
-    data.image = `${MAIN_URL}uploads/no-photo-available.png`
+    data.image = `${MAIN_URL}uploads/no-photo-available.jpeg`
   }
 }

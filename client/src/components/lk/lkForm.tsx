@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../api';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { IPerson, ISelectValues, IUserSubmitForm } from '../../interfaces';
@@ -12,7 +12,8 @@ import { FormSelect } from './FormSelect';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import dayjs from 'dayjs';
-import ('dayjs/locale/ru')
+import notification from '../../utils/notification';
+import('dayjs/locale/ru');
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Имя обязательно'),
@@ -25,7 +26,7 @@ function LkForm() {
   const [personsValues, setPersonsValues] = useState<ISelectValues[]>([]);
   const [message, setMessage] = useState('');
 
-  const getPersons: () => void = async () => {
+  const getPersons = async () => {
     const res = await api.getPersons();
     setPersons(res.data.data);
   };
@@ -58,7 +59,7 @@ function LkForm() {
   });
 
   const onSubmit = async (data: IUserSubmitForm) => {
-    console.log(data)
+    console.log(data);
     const formData = new FormData();
 
     if (Array.isArray(data.brothers)) {
@@ -86,15 +87,23 @@ function LkForm() {
         }
       }
     }
-    // const res = await api.postPerson(formData);
-    // setMessage(res?.data.message);
+    api
+      .postPerson(formData)
+      .then((res) => {
+        notification(res?.data.message, false);
+        getPersons()
+      })
+      .catch((err) => console.error(err));
   };
 
   const [startDate, setStartDate] = useState<Date | undefined>();
 
   useEffect(() => {
     if (startDate)
-      setValue('birthdate', dayjs(startDate).locale('ru').format('DD MMMM YYYY'));
+      setValue(
+        'birthdate',
+        dayjs(startDate).locale('ru').format('DD MMMM YYYY')
+      );
   }, [startDate]);
 
   return (
@@ -120,7 +129,9 @@ function LkForm() {
         onChange={(date: Date) => setStartDate(date)}
         selected={startDate}
         placeholderText='Дата рождения'
-        value={startDate && dayjs(startDate).locale('ru').format('DD MMMM YYYY')}
+        value={
+          startDate && dayjs(startDate).locale('ru').format('DD MMMM YYYY')
+        }
       />
       <FormInput
         label='Аватар'

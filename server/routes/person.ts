@@ -8,7 +8,7 @@ import { SIBLING_TYPES } from '../const';
 const router = express.Router();
 
 router.get('/persons', (request: Request, response: Response) => {
-	pool.query('SELECT * FROM public.person', (err: Error, res: QueryResult) => {
+	pool.query('SELECT * FROM public.person ORDER BY id', (err: Error, res: QueryResult) => {
 		if (err) {
 			return console.error('Error executing query', err.stack);
 		}
@@ -51,15 +51,23 @@ router.post(
 
 		//@ts-ignore
 		const image = request.file?.filename;
+		console.log('image',image)
 
 		const insertQuery = `INSERT INTO public.person (name, surname, birthdate 
-			${image ? ', image' : ''}${father_id ? ', father_id' : ''} 
-			${mother_id ? ', mother_id' : ''}${brothers ? ', brothers' : ''}
-			${sisters ? ', sisters' : ''}${children ? ', children' : ''})
+			${image ? ', image' : ''}
+			${father_id ? ', father_id' : ''} 
+			${mother_id ? ', mother_id' : ''}
+			${brothers ? ', brothers' : ''}
+			${sisters ? ', sisters' : ''}
+			${children ? ', children' : ''}
+			)
         VALUES (\'${name}\', \'${surname}\', \'${birthdate}\' 
-       ${image ? `, \'${image}\'` : ''}${father_id ? `, \'${father_id}\'` : ''}
-       ${mother_id ? `, \'${mother_id}\'` : ''}${brothers ? `, \'${brothers}\'` : ''}
-       ${sisters ? `, \'${sisters}\'` : ''}${children ? `, \'${children}\'` : ''}
+       ${image ? `, \'${image}\'` : ''}
+	   ${father_id ? `, \'${father_id}\'` : ''}
+       ${mother_id ? `, \'${mother_id}\'` : ''}
+	   ${brothers ? `, \'${brothers}\'` : ''}
+       ${sisters ? `, \'${sisters}\'` : ''}
+	   ${children ? `, \'${children}\'` : ''}
        )  RETURNING id;`
 
 		pool.query(insertQuery,

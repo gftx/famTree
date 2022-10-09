@@ -33,7 +33,7 @@ const MainPage = () => {
       </p>
       {persons.length !== 0 && (
         <div className='main-container'>
-          <div className='main-youngest'>
+          {/* <div className='main-youngest'>
             <div
               className='mainCard'
               key={persons[0].id}
@@ -56,11 +56,7 @@ const MainPage = () => {
                 {...persons[1]}
               />
             </div>
-          </div>
-          <div className='main-parents'>
-
-
-          </div>
+          </div> */}
 
           {persons.map((item: IPerson) => (
             <div
