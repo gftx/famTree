@@ -1,6 +1,28 @@
+import { CSSProperties } from 'react';
 import { Controller } from 'react-hook-form';
-import Select from 'react-select';
+import Select, { StylesConfig } from 'react-select';
+import { ISelectValues } from '../../interfaces';
 import { FormSelectProps } from '../../types';
+
+const customControlStyles: CSSProperties = {
+  borderColor: '#ededed'
+};
+
+const selectStyle: StylesConfig<ISelectValues, true> = {
+  control: (provided, state) => {
+    // provided has CSSObject type
+    // state has ControlProps type
+
+
+    // return type is CSSObject which means this line will throw error if uncommented
+    // return false;
+
+    return {
+      ...provided,
+      ...customControlStyles
+    };
+  }
+};
 
 const FormSelectMulti = ({
   control,
@@ -14,6 +36,7 @@ const FormSelectMulti = ({
     control={control}
     render={({ field: { value, onChange, onBlur } }) => (
       <Select
+        styles={selectStyle}
         className={className}
         placeholder={placeholder}
         name={name}

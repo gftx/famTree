@@ -63,11 +63,38 @@
       &_text {
         padding-left: 10px;
       }
-      &_image {
-        padding-left: 10px;
+      &_avatar {
+        &__label {
+          width: 450px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          margin-bottom: 15px;
+          border: 1px solid #ededed;
+          border-radius: 4px;
+          padding: 5px;
+
+          &:hover {
+            border-color: hsl(0, 0%, 70%);
+          }
+        }
+        &__input {
+          display: none;
+        }
+        &__picture {
+          width: 50px;
+          height: 50px;
+        }
       }
       &_datepicker {
         padding-left: 10px;
+      }
+
+      &:hover {
+        border-color: hsl(0, 0%, 70%);
       }
     }
   }

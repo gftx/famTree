@@ -5,6 +5,7 @@
   "dependencies": {
     "@hookform/resolvers": "^2.8.10",
     "axios": "^0.25.0",
+    "date-fns": "^2.29.3",
     "dayjs": "^1.11.5",
     "query-string": "^7.1.1",
     "react": "^17.0.2",

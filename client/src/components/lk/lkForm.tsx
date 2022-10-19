@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { IPerson, ISelectValues, IUserSubmitForm } from '../../interfaces';
 import { FormInput } from '../../views/input';
+import ru from 'date-fns/locale/ru';
 
 import { isEmpty } from '../../utils/isEmtyObj';
 import { FormSelectMulti } from './FormSelectMulti';
@@ -13,6 +14,7 @@ import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import dayjs from 'dayjs';
 import notification from '../../utils/notification';
+import { click } from '../../images';
 import('dayjs/locale/ru');
 
 const validationSchema = Yup.object().shape({
@@ -24,10 +26,20 @@ const validationSchema = Yup.object().shape({
 function LkForm() {
   const [persons, setPersons] = useState<IPerson[]>([]);
   const [personsValues, setPersonsValues] = useState<ISelectValues[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getPersons = async () => {
-    const res = await api.getPersons();
-    setPersons(res.data.data);
+    setIsLoading(true);
+    api
+      .getPersons()
+      .then((res) => {
+        setPersons(res.data.data);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(e);
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -76,7 +88,7 @@ function LkForm() {
       if (data[key] !== undefined) {
         if (key === 'image') {
           // @ts-ignore
-          if (data[key][0] !== undefined) {
+          if (data[key][0]) {
             // @ts-ignore
             formData.append(key, data[key][0]);
           }
@@ -89,7 +101,11 @@ function LkForm() {
     api
       .postPerson(formData)
       .then((res) => {
-        notification(res?.data.message, false);
+        if (res) {
+          notification(res?.data.message, false);
+        } else {
+          notification('', true);
+        }
         getPersons();
       })
       .catch((err) => console.error(err));
@@ -103,8 +119,11 @@ function LkForm() {
         'birthdate',
         dayjs(startDate).locale('ru').format('DD MMMM YYYY')
       );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startDate]);
+  }, [setValue, startDate]);
+
+  if (isLoading) {
+    return <>идет загрузка...</>;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,22 +144,24 @@ function LkForm() {
         className='form_input form_input_text'
       />
       <ReactDatePicker
+        dateFormat='dd/MM/yyyy'
         className='form_input form_input_datepicker'
         onChange={(date: Date) => setStartDate(date)}
+        placeholderText='Дата рождения *'
         selected={startDate}
-        placeholderText='Дата рождения'
-        value={
-          startDate && dayjs(startDate).locale('ru').format('DD MMMM YYYY')
-        }
+        locale={ru}
       />
-      <FormInput
-        label='Аватар'
-        inputName='image'
-        type='file'
-        register={register}
-        errors={errors}
-        className='form_input form_input_image'
-      />
+      <div>
+        <label className='form_input_avatar__label'>
+          <input
+            type='file'
+            className='form_input_avatar__input'
+            {...register('image')}
+          />
+          нажмите чтобы выбрать аватар
+          <img className='form_input_avatar__picture' src={click} alt='' />
+        </label>
+      </div>
       <FormSelect
         control={control}
         personsValues={personsValues}
