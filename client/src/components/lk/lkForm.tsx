@@ -26,19 +26,18 @@ const validationSchema = Yup.object().shape({
 function LkForm() {
   const [persons, setPersons] = useState<IPerson[]>([]);
   const [personsValues, setPersonsValues] = useState<ISelectValues[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [startDate, setStartDate] = useState<Date | undefined>();
 
   const getPersons = async () => {
-    setIsLoading(true);
     api
       .getPersons()
       .then((res) => {
         setPersons(res.data.data);
-        setIsLoading(false);
+        setStartDate(undefined)
+        reset();
       })
       .catch((e) => {
         console.error(e);
-        setIsLoading(false);
       });
   };
 
@@ -64,7 +63,8 @@ function LkForm() {
     handleSubmit,
     control,
     formState: { errors },
-    setValue
+    setValue,
+    reset
   } = useForm<IUserSubmitForm>({
     resolver: yupResolver(validationSchema)
   });
@@ -111,8 +111,6 @@ function LkForm() {
       .catch((err) => console.error(err));
   };
 
-  const [startDate, setStartDate] = useState<Date | undefined>();
-
   useEffect(() => {
     if (startDate)
       setValue(
@@ -120,10 +118,6 @@ function LkForm() {
         dayjs(startDate).locale('ru').format('DD MMMM YYYY')
       );
   }, [setValue, startDate]);
-
-  if (isLoading) {
-    return <>идет загрузка...</>;
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

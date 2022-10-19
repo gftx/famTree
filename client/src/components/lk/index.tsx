@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { LkForm } from './lkForm'
-import PersonRow from './personRow'
+import { useState } from 'react';
+import { LkForm } from './lkForm';
+import PersonRow from './personRow';
 
 const LK = () => {
-  const [tabs, setTabs] = useState<boolean>(false)
+  // если true то вкладка все люди
+  // если false то вкладка добавить человека
+  const [tabs, setTabs] = useState(false);
 
   return (
     <>
@@ -12,19 +14,27 @@ const LK = () => {
         <li
           className='lk-tabs__tab'
           onClick={() => setTabs(false)}
-          style={!tabs ? { color: '#333', borderBottom: '1px solid #333' } : undefined}
-        >Все люди
+          style={
+            !tabs
+              ? { color: '#333', borderBottom: '1px solid #333' }
+              : undefined
+          }
+        >
+          Все люди
         </li>
         <li
           className='lk-tabs__tab'
           onClick={() => setTabs(true)}
-          style={tabs ? { color: '#333', borderBottom: '1px solid #333' } : undefined}
-        >Добавить человека
+          style={
+            tabs ? { color: '#333', borderBottom: '1px solid #333' } : undefined
+          }
+        >
+          Добавить человека
         </li>
       </ul>
       {tabs ? <LkForm /> : <PersonRow />}
     </>
-  )
-}
+  );
+};
 
-export { LK }
+export { LK };

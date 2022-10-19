@@ -41,6 +41,7 @@ const FormSelect = ({
         options={personsValues}
         value={personsValues.find((c) => c.value === value)}
         onChange={(val) => onChange(val?.value)}
+        isClearable
       />
     )}
   />
