@@ -32,7 +32,7 @@ const LK = () => {
           Добавить человека
         </li>
       </ul>
-      {tabs ? <LkForm /> : <PersonRow />}
+      {tabs ? <LkForm setTabs={setTabs}/> : <PersonRow />}
     </>
   );
 };

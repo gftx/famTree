@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { api } from '../../api';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -23,7 +23,11 @@ const validationSchema = Yup.object().shape({
   birthdate: Yup.string().required('Дата рождения обязательно')
 });
 
-function LkForm() {
+type LKFormProps = {
+  setTabs: (a:boolean) => void
+}
+
+const LkForm:FC<LKFormProps> = ({setTabs}) => {
   const [persons, setPersons] = useState<IPerson[]>([]);
   const [personsValues, setPersonsValues] = useState<ISelectValues[]>([]);
   const [startDate, setStartDate] = useState<Date | undefined>();
@@ -33,8 +37,7 @@ function LkForm() {
       .getPersons()
       .then((res) => {
         setPersons(res.data.data);
-        setStartDate(undefined)
-        reset();
+        setTabs(true)
       })
       .catch((e) => {
         console.error(e);
@@ -63,8 +66,7 @@ function LkForm() {
     handleSubmit,
     control,
     formState: { errors },
-    setValue,
-    reset
+    setValue
   } = useForm<IUserSubmitForm>({
     resolver: yupResolver(validationSchema)
   });
